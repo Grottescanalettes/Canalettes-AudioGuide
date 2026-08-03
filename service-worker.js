@@ -1,4 +1,4 @@
-const CACHE_NAME = "grottes-canalettes-v29";
+const CACHE_NAME = "grottes-canalettes-v30";
 
 
 const urlsToCache = [
@@ -86,7 +86,27 @@ self.addEventListener("install", event => {
 
     .then(cache => {
 
-      return cache.addAll(urlsToCache);
+      return Promise.all(
+
+        urlsToCache.map(url => {
+
+          return fetch(url)
+
+          .then(response => {
+
+            return cache.put(url, response);
+
+          })
+
+          .catch(error => {
+
+            console.log("Erreur cache :", url);
+
+          });
+
+        })
+
+      );
 
     })
 
@@ -132,8 +152,7 @@ self.addEventListener("activate", event => {
 
 
 
-
-// HORS CONNEXION
+// MODE HORS CONNEXION
 
 self.addEventListener("fetch", event => {
 
@@ -141,7 +160,9 @@ self.addEventListener("fetch", event => {
 
 
   if(request.method !== "GET"){
+
     return;
+
   }
 
 
@@ -152,8 +173,6 @@ self.addEventListener("fetch", event => {
     .then(response => {
 
 
-      // Utilise le cache si disponible
-
       if(response){
 
         return response;
@@ -161,14 +180,10 @@ self.addEventListener("fetch", event => {
       }
 
 
-      // Sinon tente internet
-
       return fetch(request)
 
       .catch(() => {
 
-
-        // Retour à l'accueil hors connexion
 
         if(request.headers.get("accept")?.includes("text/html")){
 
