@@ -9,9 +9,9 @@
 
 <title>Grottes des Canalettes - Audio Guide</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/style.css">
 
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="/manifest.json">
 
 <meta name="theme-color" content="#c8a96b">
 
@@ -27,7 +27,6 @@
 <div class="overlay"></div>
 
 
-
 <div class="content">
 
 
@@ -41,7 +40,6 @@ Laissez-vous guider au cœur de la montagne catalane
 </h2>
 
 
-
 <p id="description">
 Une exploration sonore des merveilles souterraines des Grottes des Canalettes
 </p>
@@ -53,8 +51,6 @@ Une exploration sonore des merveilles souterraines des Grottes des Canalettes
 🎧 Visite audio gratuite • 📱 Disponible hors connexion
 
 </div>
-
-
 
 
 
@@ -103,9 +99,9 @@ Català
 
 
 
-<script src="script.js"></script>
+<script src="/script.js"></script>
 
-<script src="langue.js"></script>
+<script src="/langue.js"></script>
 
 
 
@@ -116,7 +112,7 @@ Català
 
 // Chargement du texte d'accueil en français
 
-fetch("textes/fr.json")
+fetch("/textes/fr.json")
 
 
 .then(response => {
@@ -162,7 +158,6 @@ textes.accueil.info;
 })
 
 
-
 .catch(error => {
 
 
@@ -174,6 +169,8 @@ console.log("Erreur chargement textes :", error);
 
 
 </script>
+
+
 
 
 
@@ -191,7 +188,7 @@ if ("serviceWorker" in navigator) {
 window.addEventListener("load", function() {
 
 
-navigator.serviceWorker.register("service-worker.js")
+navigator.serviceWorker.register("/service-worker.js")
 
 
 .then(function(registration) {
@@ -220,6 +217,7 @@ console.log("Erreur Service Worker :", error);
 
 
 </script>
+
 
 
 
