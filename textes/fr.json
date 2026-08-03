@@ -1,0 +1,56 @@
+{
+  "couloir-des-cupules": {
+    "titre": "Couloir des Cupules",
+    "texte": "Découvrez les premières formations remarquables du parcours souterrain."
+  },
+
+  "salle-blanche": {
+    "titre": "Salle Blanche",
+    "texte": "Bienvenue dans la Salle Blanche, célèbre pour ses concrétions aux teintes claires qui témoignent de milliers d'années de formation."
+  },
+
+  "salle-du-balcon": {
+    "titre": "Salle du Balcon",
+    "texte": "Depuis cette salle, admirez les volumes impressionnants de la grotte et les nombreuses concrétions qui décorent les parois."
+  },
+
+  "lac-aux-atolls": {
+    "titre": "Lac aux Atolls",
+    "texte": "Les eaux calmes du lac reflètent les concrétions et créent un paysage souterrain spectaculaire."
+  },
+
+  "salle-du-temple-angkor": {
+    "titre": "Salle du Temple d'Angkor",
+    "texte": "Cette salle monumentale évoque les temples d'Asie grâce à ses immenses colonnes naturelles et à ses reliefs remarquables."
+  },
+
+  "gouffre": {
+  "titre": "Gouffre",
+  "texte": "Le Balcon des Ténèbres est un promontoire naturel situé à la lisière de la majestueuse salle du Dôme Rouge. De ce point d’observation saisissant, les visiteurs peuvent contempler l’impressionnant gouffre sans fond, un puits vertigineux qui semble s’enfoncer dans les entrailles de la montagne.\n\nCes formations spectaculaires sont le fruit de bouleversements géologiques survenus il y a environ 40 millions d’années. À cette époque, les forces titanesques de la Terre ont fissuré et sculpté le massif, donnant naissance à cette immense cavité souterraine.\n\nLa voûte du Balcon des Ténèbres s’élève à 30 mètres de hauteur, tandis que le Gouffre Sans Fond plonge à une profondeur de 40 mètres.\n\nMais l’exploration ne s’arrête pas là. Au-delà de ce panorama vertigineux, la grotte se prolonge sur plus d’une trentaine de kilomètres, dévoilant un réseau souterrain fascinant, où se succèdent galeries mystérieuses, rivières souterraines et formations minérales d’une beauté saisissante."
+},
+
+  "plafond-des-excentriques": {
+  "titre": "Plafond des Excentriques",
+  "texte": "Levez les yeux et admirez un phénomène fascinant : le plafond des excentriques. Contrairement aux stalactites classiques qui poussent droit vers le sol, celles-ci s’étendent dans toutes les directions !\n\nCe spectacle étonnant est dû à plusieurs forces invisibles : les champs magnétiques, les courants d’air et le cheminement de l’eau dans la roche. Ces éléments perturbent la croissance des concrétions, qui s’allongent alors en filaments délicats, semblables à de la dentelle.\n\nRegardez bien… Parmi ces formations uniques, vous pourriez distinguer un cheval de cristal, un nœud de fée ou encore un trapèze. Et pour le reste, laissez parler votre imagination !"
+},
+
+"navigation": {
+  "precedent": "← Précédent",
+  "suivant": "Suivant →",
+  "changerLangue": "🌐 Changer de langue"
+},
+
+"interface": {
+  "etape": "Étape",
+  "sur": "sur",
+  "erreurSalle": "Erreur : salle introuvable",
+  "erreurChargement": "Erreur de chargement"
+},
+
+"accueil": {
+  "titre": "Grottes des Canalettes",
+  "sousTitre": "Laissez-vous guider au cœur de la montagne catalane",
+  "description": "Une exploration sonore des merveilles souterraines des Grottes des Canalettes",
+  "info": "🎧 Visite audio gratuite • 📱 Disponible hors connexion"
+}
+}

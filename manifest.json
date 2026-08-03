@@ -1,0 +1,24 @@
+{
+  "name": "Audio Guide - Grottes des Canalettes",
+  "short_name": "Canalettes Audio",
+  "description": "Visite audio hors connexion des Grottes des Canalettes",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#c8a96b",
+  "lang": "fr",
+  "orientation": "portrait",
+
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-152.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

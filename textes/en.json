@@ -1,0 +1,56 @@
+{
+  "couloir-des-cupules": {
+    "titre": "Cupules Corridor",
+    "texte": "Discover the first remarkable formations of the underground journey."
+  },
+
+  "salle-blanche": {
+    "titre": "White Room",
+    "texte": "Discover this beautiful chamber and its bright mineral formations shaped over thousands of years."
+  },
+
+  "salle-du-balcon": {
+    "titre": "Balcony Room",
+    "texte": "Discover this spectacular chamber and its impressive formations."
+  },
+
+  "lac-aux-atolls": {
+    "titre": "Atolls Lake",
+    "texte": "Admire the underground lake and its reflections, creating a unique atmosphere beneath the mountain."
+  },
+
+  "salle-du-temple-angkor": {
+    "titre": "Angkor Temple Room",
+    "texte": "A monumental chamber whose shapes evoke the famous temples of Asia, sculpted by nature over time."
+  },
+
+  "gouffre": {
+    "titre": "Abyss",
+    "texte": "The Balcony of Darkness is a natural viewpoint located at the edge of the majestic Red Dome chamber. From this impressive observation point, visitors can contemplate the endless abyss, a dizzying shaft descending deep into the heart of the mountain."
+  },
+
+  "plafond-des-excentriques": {
+    "titre": "Excentrics Ceiling",
+    "texte": "Look up and admire a fascinating phenomenon: the excentrics ceiling. Unlike classic stalactites that grow straight down, these formations extend in every direction, creating a delicate natural lacework."
+  },
+
+  "navigation": {
+  "precedent": "← Previous",
+  "suivant": "Next →",
+  "changerLangue": "🌐 Change language"
+},
+
+"interface": {
+  "etape": "Step",
+  "sur": "of",
+  "erreurSalle": "Error: room not found",
+  "erreurChargement": "Loading error"
+},
+
+"accueil": {
+  "titre": "Canalettes Caves",
+  "sousTitre": "Let yourself be guided into the heart of the Catalan mountains",
+  "description": "A sound exploration of the underground wonders of the Canalettes Caves",
+  "info": "🎧 Free audio tour • 📱 Available offline"
+}
+}

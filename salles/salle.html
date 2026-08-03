@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grottes des Canalettes</title>
+
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<div class="overlay"></div>
+
+<div class="content">
+
+<h1 id="titre-salle">
+Chargement...
+</h1>
+
+<h2>
+Grottes des Canalettes
+</h2>
+
+<div id="progression"></div>
+
+<div id="contenu-salle"></div>
+
+<div class="navigation-salles">
+
+<a id="precedent" class="retour"></a>
+
+<a id="suivant" class="retour"></a>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let langue = localStorage.getItem("langue") || "fr";
+
+let parametre = new URLSearchParams(window.location.search);
+
+let nomSalle = parametre.get("salle");
+
+Promise.all([
+
+fetch("../textes/salles.json").then(response => response.json()),
+
+fetch("../textes/" + langue + ".json").then(response => response.json())
+
+])
+
+.then(([configuration, textes]) => {
+
+let salle = configuration.salles[nomSalle];
+
+let texte = textes[nomSalle];
+
+let navigation = textes.navigation;
+
+if (!salle || !texte) {
+
+document.getElementById("titre-salle").innerHTML =
+textes.interface.erreurSalle;
+
+return;
+
+}
+
+/* TITRE */
+
+document.getElementById("titre-salle").innerHTML =
+texte.titre;
+
+/* PROGRESSION */
+
+document.getElementById("progression").innerHTML =
+textes.interface.etape + " " +
+salle.numero + " " +
+textes.interface.sur + " " +
+configuration.ordre.length;
+
+/* CONTENU */
+
+let contenu = document.getElementById("contenu-salle");
+
+if (salle.audio) {
+
+contenu.innerHTML = `
+
+<div class="audio-box">
+
+<audio controls preload="auto" id="lecteur-audio">
+
+<source src="../audios/${langue}/${nomSalle}.mp3" type="audio/mpeg">
+
+Votre navigateur ne prend pas en charge la lecture audio.
+
+</audio>
+
+</div>
+
+<div class="texte-visite">
+
+<p>${texte.texte}</p>
+
+</div>
+
+`;
+
+}
+
+else {
+
+contenu.innerHTML = `
+
+<div class="texte-visite">
+
+<p>${texte.texte}</p>
+
+</div>
+
+`;
+
+}
+
+/* BOUTON PRÉCÉDENT */
+
+if (salle.precedent) {
+
+let boutonPrecedent = document.getElementById("precedent");
+
+boutonPrecedent.href =
+"salle.html?salle=" + salle.precedent;
+
+boutonPrecedent.innerHTML =
+navigation.precedent;
+
+}
+
+else {
+
+document.getElementById("precedent").style.display = "none";
+
+}
+
+/* BOUTON CHANGER DE LANGUE */
+
+if (nomSalle === "couloir-des-cupules") {
+
+let boutonLangue = document.createElement("a");
+
+boutonLangue.href = "../index.html";
+
+boutonLangue.className = "retour";
+
+boutonLangue.innerHTML = navigation.changerLangue;
+
+document.querySelector(".navigation-salles").prepend(boutonLangue);
+
+}
+
+/* BOUTON SUIVANT */
+
+if (salle.suivant) {
+
+let boutonSuivant = document.getElementById("suivant");
+
+boutonSuivant.href =
+"salle.html?salle=" + salle.suivant;
+
+boutonSuivant.innerHTML =
+navigation.suivant;
+
+}
+
+else {
+
+document.getElementById("suivant").style.display = "none";
+
+}
+
+})
+
+.catch(error => {
+
+console.log(error);
+
+document.getElementById("titre-salle").innerHTML =
+"Erreur de chargement";
+
+});
+
+</script>
+
+</body>
+
+</html>

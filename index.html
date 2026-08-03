@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grottes des Canalettes - Audio Guide</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#c8a96b">
+
+</head>
+
+
+<body>
+
+
+<div class="hero">
+
+
+<div class="overlay"></div>
+
+
+
+<div class="content">
+
+
+<h1 id="titre-principal">
+Grottes des Canalettes
+</h1>
+
+
+<h2 id="sous-titre">
+Laissez-vous guider au cœur de la montagne catalane
+</h2>
+
+
+
+<p id="description">
+Une exploration sonore des merveilles souterraines des Grottes des Canalettes
+</p>
+
+
+
+<div class="info" id="information">
+
+🎧 Visite audio gratuite • 📱 Disponible hors connexion
+
+</div>
+
+
+
+
+
+<div class="languages">
+
+
+<a href="langues/francais.html" onclick="choisirLangue('fr')">
+🇫🇷 Français
+</a>
+
+
+<a href="langues/anglais.html" onclick="choisirLangue('en')">
+🇬🇧 English
+</a>
+
+
+<a href="langues/espagnol.html" onclick="choisirLangue('es')">
+🇪🇸 Español
+</a>
+
+
+<a href="langues/catalan.html" onclick="choisirLangue('ca')">
+Català
+</a>
+
+
+<a href="langues/allemand.html" onclick="choisirLangue('de')">
+🇩🇪 Deutsch
+</a>
+
+
+<a href="langues/russe.html" onclick="choisirLangue('ru')">
+🇷🇺 Русский
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script src="script.js"></script>
+
+<script src="langue.js"></script>
+
+
+
+
+
+<script>
+
+
+// Chargement du texte d'accueil en français
+
+fetch("textes/fr.json")
+
+
+.then(response => {
+
+
+if (!response.ok) {
+
+throw new Error("Fichier fr.json introuvable");
+
+}
+
+
+return response.json();
+
+
+})
+
+
+.then(textes => {
+
+
+
+document.getElementById("titre-principal").innerHTML =
+textes.accueil.titre;
+
+
+
+document.getElementById("sous-titre").innerHTML =
+textes.accueil.sousTitre;
+
+
+
+document.getElementById("description").innerHTML =
+textes.accueil.description;
+
+
+
+document.getElementById("information").innerHTML =
+textes.accueil.info;
+
+
+
+})
+
+
+
+.catch(error => {
+
+
+console.log("Erreur chargement textes :", error);
+
+
+});
+
+
+
+</script>
+
+
+
+
+
+<script>
+
+
+// Activation du Service Worker
+
+
+if ("serviceWorker" in navigator) {
+
+
+window.addEventListener("load", function() {
+
+
+navigator.serviceWorker.register("service-worker.js")
+
+
+.then(function(registration) {
+
+
+console.log("Service Worker actif :", registration.scope);
+
+
+})
+
+
+.catch(function(error) {
+
+
+console.log("Erreur Service Worker :", error);
+
+
+});
+
+
+});
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

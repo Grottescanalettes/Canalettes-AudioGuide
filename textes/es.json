@@ -1,0 +1,56 @@
+{
+  "couloir-des-cupules": {
+    "titre": "Pasillo de las Cúpulas",
+    "texte": "Descubra las primeras formaciones destacadas del recorrido subterráneo."
+  },
+
+  "salle-blanche": {
+    "titre": "Sala Blanca",
+    "texte": "Descubra esta hermosa sala y sus formaciones minerales claras, creadas durante miles de años."
+  },
+
+  "salle-du-balcon": {
+    "titre": "Sala del Balcón",
+    "texte": "Descubra esta espectacular sala y sus impresionantes formaciones naturales."
+  },
+
+  "lac-aux-atolls": {
+    "titre": "Lago de los Atolones",
+    "texte": "Admire el lago subterráneo y sus reflejos, que crean una atmósfera única bajo la montaña."
+  },
+
+  "salle-du-temple-angkor": {
+    "titre": "Sala del Templo de Angkor",
+    "texte": "Una sala monumental cuyas formas recuerdan a los famosos templos de Asia, esculpidas lentamente por la naturaleza."
+  },
+
+  "gouffre": {
+    "titre": "Abismo",
+    "texte": "El Balcón de las Tinieblas es un mirador natural situado al borde de la majestuosa sala de la Cúpula Roja. Desde este impresionante punto de observación, los visitantes pueden contemplar el abismo sin fondo, un pozo vertiginoso que parece adentrarse en las entrañas de la montaña."
+  },
+
+  "plafond-des-excentriques": {
+    "titre": "Techo de las Excéntricas",
+    "texte": "Levante la vista y admire un fenómeno fascinante: el techo de las excéntricas. A diferencia de las estalactitas clásicas que crecen hacia el suelo, estas formaciones se extienden en todas las direcciones creando una delicada estructura natural."
+  },
+
+  "navigation": {
+  "precedent": "← Anterior",
+  "suivant": "Siguiente →",
+  "changerLangue": "🌐 Cambiar idioma"
+},
+
+"interface": {
+  "etape": "Etapa",
+  "sur": "de",
+  "erreurSalle": "Error: sala no encontrada",
+  "erreurChargement": "Error de carga"
+},
+
+"accueil": {
+  "titre": "Grutas de Canalettes",
+  "sousTitre": "Déjate guiar en el corazón de la montaña catalana",
+  "description": "Una exploración sonora de las maravillas subterráneas de las Grutas de Canalettes",
+  "info": "🎧 Visita audio gratuita • 📱 Disponible sin conexión"
+}
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Salle du Balcon - Grottes des Canalettes</title>
+
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="hero">
+
+<div class="overlay"></div>
+
+
+<div class="content">
+
+
+<h1>
+Salle du Balcon
+</h1>
+
+
+<h2>
+Grottes des Canalettes
+</h2>
+
+<p>
+Découvrez l'histoire et les formations exceptionnelles de cette salle souterraine.
+</p>
+
+
+
+<div class="audio-box">
+
+<audio controls id="lecteur-audio">
+
+<source id="audio-source" src="" type="audio/mp3">
+
+Votre navigateur ne supporte pas la lecture audio.
+
+</audio>
+
+</div>
+
+
+
+<div class="navigation-salles">
+
+<a href="salle-blanche.html" class="retour">
+
+← Salle Blanche
+
+</a>
+
+
+<a href="lac-aux-atolls.html" class="retour">
+
+Lac aux Atolls →
+
+</a>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<script>
+
+let langue = localStorage.getItem("langue") || "fr";
+
+
+let sourceAudio = document.getElementById("audio-source");
+
+let lecteur = document.getElementById("lecteur-audio");
+
+
+sourceAudio.src = "../audios/" + langue + "/salle-du-balcon.wav";
+
+
+lecteur.load();
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+{
+  "ordre": [
+    "couloir-des-cupules",
+    "salle-blanche",
+    "salle-du-balcon",
+    "lac-aux-atolls",
+    "salle-du-temple-angkor",
+    "gouffre",
+    "plafond-des-excentriques"
+  ],
+
+  "salles": {
+
+    "couloir-des-cupules": {
+      "numero": 1,
+      "audio": true,
+      "duree": "",
+      "precedent": null,
+      "suivant": "salle-blanche"
+    },
+
+    "salle-blanche": {
+      "numero": 2,
+      "audio": true,
+      "duree": "",
+      "precedent": "couloir-des-cupules",
+      "suivant": "salle-du-balcon"
+    },
+
+    "salle-du-balcon": {
+      "numero": 3,
+      "audio": true,
+      "duree": "",
+      "precedent": "salle-blanche",
+      "suivant": "lac-aux-atolls"
+    },
+
+    "lac-aux-atolls": {
+      "numero": 4,
+      "audio": true,
+      "duree": "",
+      "precedent": "salle-du-balcon",
+      "suivant": "salle-du-temple-angkor"
+    },
+
+    "salle-du-temple-angkor": {
+      "numero": 5,
+      "audio": true,
+      "duree": "",
+      "precedent": "lac-aux-atolls",
+      "suivant": "gouffre"
+    },
+
+    "gouffre": {
+      "numero": 6,
+      "audio": false,
+      "duree": "",
+      "precedent": "salle-du-temple-angkor",
+      "suivant": "plafond-des-excentriques"
+    },
+
+    "plafond-des-excentriques": {
+      "numero": 7,
+      "audio": false,
+      "duree": "",
+      "precedent": "gouffre",
+      "suivant": null
+    }
+
+  }
+}
