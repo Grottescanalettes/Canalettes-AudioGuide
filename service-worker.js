@@ -1,4 +1,4 @@
-const CACHE_NAME = "grottes-canalettes-v28";
+const CACHE_NAME = "grottes-canalettes-v29";
 
 
 const urlsToCache = [
@@ -9,6 +9,7 @@ const urlsToCache = [
   "./script.js",
   "./langue.js",
   "./manifest.json",
+  "./service-worker.js",
 
   "./images/icon-192.png",
   "./images/icon-152.png",
@@ -73,14 +74,11 @@ const urlsToCache = [
 
 
 
-
 // INSTALLATION
 
 self.addEventListener("install", event => {
 
-
   self.skipWaiting();
-
 
   event.waitUntil(
 
@@ -88,18 +86,13 @@ self.addEventListener("install", event => {
 
     .then(cache => {
 
-
       return cache.addAll(urlsToCache);
-
 
     })
 
-
   );
 
-
 });
-
 
 
 
@@ -108,18 +101,15 @@ self.addEventListener("install", event => {
 
 self.addEventListener("activate", event => {
 
-
   event.waitUntil(
 
     caches.keys()
 
     .then(cacheNames => {
 
-
       return Promise.all(
 
         cacheNames.map(cache => {
-
 
           if(cache !== CACHE_NAME){
 
@@ -127,20 +117,15 @@ self.addEventListener("activate", event => {
 
           }
 
-
         })
-
 
       );
 
-
     })
 
-    .then(()=> self.clients.claim())
-
+    .then(() => self.clients.claim())
 
   );
-
 
 });
 
@@ -148,34 +133,26 @@ self.addEventListener("activate", event => {
 
 
 
-
-
-// MODE HORS CONNEXION
+// HORS CONNEXION
 
 self.addEventListener("fetch", event => {
-
 
   const request = event.request;
 
 
   if(request.method !== "GET"){
-
     return;
-
   }
 
 
-
-
   event.respondWith(
-
 
     caches.match(request)
 
     .then(response => {
 
 
-      // trouvé dans le cache
+      // Utilise le cache si disponible
 
       if(response){
 
@@ -184,21 +161,18 @@ self.addEventListener("fetch", event => {
       }
 
 
-
-      // sinon internet
+      // Sinon tente internet
 
       return fetch(request)
 
-      .catch(()=>{
+      .catch(() => {
 
 
-        // Si une page HTML est demandée hors connexion
+        // Retour à l'accueil hors connexion
 
-        if(request.headers.get("accept").includes("text/html")){
-
+        if(request.headers.get("accept")?.includes("text/html")){
 
           return caches.match("./index.html");
-
 
         }
 
@@ -208,8 +182,6 @@ self.addEventListener("fetch", event => {
 
     })
 
-
   );
-
 
 });
