@@ -1,56 +1,84 @@
 {
-  "couloir-des-cupules": {
-    "titre": "Couloir des Cupules",
-    "texte": "Découvrez les premières formations remarquables du parcours souterrain."
+  "accueil": {
+    "titre": "Grottes des Canalettes",
+    "sousTitre": "Laissez-vous guider au cœur de la montagne catalane",
+    "description": "Une exploration sonore des merveilles souterraines des Grottes des Canalettes",
+    "info": "🎧 Visite audio gratuite • 📱 Disponible hors connexion"
   },
 
-  "salle-blanche": {
-    "titre": "Salle Blanche",
-    "texte": "Bienvenue dans la Salle Blanche, célèbre pour ses concrétions aux teintes claires qui témoignent de milliers d'années de formation."
+  "salles": {
+
+    "galerie-acces": {
+      "titre": "Galerie d’Accès",
+      "texte": "Bienvenue aux Grottes des Canalettes.\n\nPendant votre visite, laissez-vous guider par l’eau, la roche et le temps.\n\nPrenez le temps de regarder autour de vous : certaines formations se trouvent au-dessus de votre tête, d’autres à vos pieds.\n\nLa grotte se découvre autant en levant les yeux qu'en regardant devant soi.\n\nVotre visite commence par une galerie de 160 mètres, creusée dans des calcaires formés il y a environ 395 millions d'années.\n\nEn avançant, vous quittez progressivement le monde extérieur pour entrer dans un univers façonné par l'eau, la roche et le temps.\n\nIci, tout semble immobile. Pourtant, la grotte continue d'évoluer, très lentement, au rythme de l'eau qui circule dans la montagne."
+    },
+
+    "salle-fontaine": {
+      "titre": "Salle de la Fontaine",
+      "texte": "Cette salle s'est formée autour d'une fissure qui reliait autrefois la cavité à la surface du massif calcaire.\n\nL'eau s'y est infiltrée et a progressivement creusé la roche, donnant naissance à cette salle.\n\nObservez les parois : elles portent encore les traces de cette longue histoire entre l'eau et la roche."
+    },
+
+    "couloir-des-cupules": {
+      "titre": "Couloir des Cupules",
+      "texte": "Il y a environ 10 millions d'années, une rivière souterraine a commencé à sculpter cette galerie dans le marbre.\n\nLorsque Edmond Delonca et ses compagnons l'explorent en 1981, le passage est presque entièrement rempli de sédiments. Il faudra un travail considérable pour dégager la galerie et permettre son aménagement.\n\nLevez les yeux.\n\nSur la voûte et les parois, vous pouvez observer de petites cavités arrondies : les cupules. Elles ont été façonnées progressivement par l'action de l'eau et de l'érosion.\n\nAu fil du temps, l'eau a également creusé des cheminées et des galeries, transformant peu à peu la montagne.\n\nEdmond Delonca était alors à la recherche d'une rivière souterraine.\n\nIl ne la trouvera pas ici...\n\nMais quelques mètres plus loin, il fera une découverte qui changera l'histoire des Canalettes : la Salle Blanche.",
+      "audio": "/audios/fr/couloir-des-cupules.mp3"
+    },
+
+    "salle-blanche": {
+      "titre": "Salle Blanche",
+      "texte": "Découverte en 1982 par Edmond Delonca et Henri Salvayre, la Salle Blanche doit son nom à la remarquable blancheur de ses concrétions.\n\nMais regardez attentivement : la salle n'est pas seulement blanche.\n\nLes teintes que vous observez sont liées notamment aux oxydes présents dans le sol :\n\n● Blanc : calcite relativement pure.\n● Ocre rouge : présence d'oxydes de fer.\n● Noir : présence d'oxydes de manganèse.\n\nUn véritable musée souterrain\n\nLa Salle Blanche rassemble une grande variété de formations :\n\nStalactites : elles descendent du plafond.\n\nStalagmites : elles s'élèvent depuis le sol.\n\nDraperies : l'eau ruisselle le long des parois inclinées et dépose progressivement de la calcite.\n\nColonnes : elles apparaissent lorsqu'une stalactite et une stalagmite finissent par se rejoindre.\n\nGours : Petits bassins naturels formés par les dépôts de calcite.\n\nFistuleuses, ou « macaronis », de fines concrétions tubulaires, creuses et particulièrement fragiles.\n\nPrenez quelques secondes pour observer les différentes formes autour de vous.\n\nChacune est le résultat d'une combinaison particulière entre l'eau, la roche et le temps.\n\nEn moyenne les concrétions “poussent” d’1mm par an, soit 10cm par siècle.\n\nMais la vitesse de croissance varie selon les conditions locales : dans les grottes sèches ou pauvres en calcaire cela peut descendre à moins d’1cm par millénaire.\n\nDans des conditions “idéales” (eau très chargée en calcaire, fort goutte-à-goutte, bonne température) certaines concrétions fines comme les fistuleuses peuvent pousser de plus de 1cm par an !\n\nLa vitesse de formation dépend essentiellement :\n\n● Du débit d’eau (hydrométrie)\n● De la concentration en CO₂ et en carbonate de calcium\n● De la température et de l’hygrométrie (humidité) de la grotte\n\nUne découverte difficile à atteindre\n\nLa Salle Blanche se situe 12 mètres plus bas qu'une partie plus ancienne de la grotte, découverte 30 ans auparavant.\n\nPour permettre son accès, il a fallu dégager un passage obstrué par des blocs de pierre à la suite d'un effondrement.\n\nUn travail considérable, de mise en place de passerelles et escaliers, qui a finalement permis de relier les différentes parties de la grotte et de rendre cette salle accessible au public.",
+      "audio": "/audios/fr/salle-blanche.mp3"
+    },
+
+    "salle-du-balcon": {
+      "titre": "Salle du Balcon",
+      "texte": "Vous entrez maintenant dans une partie de la grotte découverte dès 1951.\n\nÀ cette époque, les spéléologues accédaient à cette zone depuis le fond des galeries aujourd'hui ouvertes au public.\n\nMais de nombreux éboulis rendaient la progression particulièrement difficile. Ils n'iront pas plus loin.\n\nC'est notamment pour cette raison que la Salle Blanche, pourtant située à proximité, ne sera découverte que plusieurs décennies plus tard.\n\nUne salle née d'un effondrement\n\nLevez les yeux : vous pourrez distinguer une grande fissure qui témoigne de l'endroit où se trouvait probablement le plafond avant cet événement géologique, au moment de la formation des Pyrénées.\n\nCet effondrement a ouvert une immense cavité, aujourd'hui dominée par un véritable ciel de stalactites.\n\nEn dessous, vous pouvez observer le marbre rose de Villefranche, roche emblématique de ce secteur.\n\nEn poursuivant votre chemin vers le Lac aux Atolls, vous longerez cette paroi de marbre brut.\n\nVous passerez alors sous une impressionnante dalle suspendue : un morceau de strate détaché de la voûte et aujourd'hui fixé par la calcite.\n\nPrenez le temps de lever les yeux : la grotte raconte aussi son histoire dans ses fractures et ses effondrements.",
+      "audio": "/audios/fr/salle-du-balcon.mp3"
+    },
+
+    "armandines": {
+      "titre": "Les Armandines",
+      "texte": "Regardez ces étonnantes colonnes à plateaux.\n\nSurnommées les Armandines, elles témoignent des variations du climat et de l'écoulement de l'eau au cours du temps.\n\nLeur forme s'est construite progressivement.\n\nPendant les périodes plus humides, l'eau chargée en calcite circule davantage et dépose de nouvelles couches minérales.\n\nLorsque les conditions deviennent plus sèches, les dépôts ralentissent.\n\nCes changements successifs créent les différents plateaux que vous pouvez observer aujourd'hui.\n\nChaque couche est ainsi la trace d'une période de l'histoire de la grotte."
+    },
+
+    "lac-aux-atolls": {
+      "titre": "Le Lac aux Atolls : Un Jardin Minéral",
+      "texte": "L'une des formations les plus étonnantes des Canalettes.\n\nLe Lac aux Atolls doit son nom aux petites formations minérales qui émergent de l'eau.\n\nElles se sont formées très lentement grâce au dépôt progressif de carbonate de chaux sur les blocs de roche calcaire immergés.\n\nLeur aspect rappelle parfois de petits atolls coralliens, ou encore des choux-fleurs pétrifiés.\n\nIci, pas de végétation...\n\nEt pourtant, ce paysage ressemble à un véritable jardin minéral.\n\nL'eau du lac reste à une température d'environ 10 °C toute l'année.\n\nMême si tout semble figé, la nature poursuit encore aujourd'hui son oeuvre, en déposant lentement de nouvelles couches minérales.",
+      "audio": "/audios/fr/lac-aux-atolls.mp3"
+    },
+
+    "petit-lac": {
+      "titre": "Le Petit Lac",
+      "texte": "Souvent oublié des visiteurs, ce lac mérite pourtant que l’on s’y attarde.\n\nCette partie de la grotte rassemble elle aussi une grande diversité de concrétions : stalactites, stalagmites, colonnes et gours au sol, mais également de belles draperies, plus épaisses que celles que vous avez pu observer sur le parcours principal.\n\nVous pourrez également retrouver les formations en forme de « choux-fleurs », déjà observées au Lac aux Atolls.\n\nEt si vous regardez attentivement, vous découvrirez peut-être des formations plus délicates encore : les fistuleuses et les excentriques, dont les formes peuvent parfois surprendre par leur finesse et leur originalité.\n\nPrenez quelques instants pour observer cette diversité : ici aussi, l’eau a laissé son empreinte dans la roche, lentement, au fil du temps."
+    },
+
+    "salle-du-temple-angkor": {
+      "titre": "La Salle d’Angkor",
+      "texte": "Vous êtes maintenant au coeur des Grottes des Canalettes, à environ 500 mètres de l'entrée.\n\nAvec ses 60 mètres de diamètre, cette immense salle compte parmi les espaces les plus spectaculaires de la visite.\n\nAu-dessus de vous se trouvent environ 300 mètres de roche.\n\nImaginez : une masse de montagne équivalente de la Tour Eiffel en roche vous sépare de la surface.\n\nUn décor sculpté par le temps\n\nLa salle s'est formée au cours de l'histoire géologique du massif, puis s'est progressivement ornée de concrétions.\n\nSon nom fait référence au célèbre temple khmer d'Angkor, au Cambodge. Les dimensions impressionnantes de la salle, son architecture naturelle et les formes sculptées par les concrétions évoquent, pour certains, les grands espaces et les monuments de ce site emblématique.\n\nAu fond de la salle, observez les impressionnantes Orgues, également certaines formations qui évoquent les lignes de la Sagrada Família, célèbre basilique imaginée par l'architecte catalan Antoni Gaudí.\n\nVous pourrez également découvrir la Colonne de Martel, ainsi nommée en hommage à Édouard-Alfred Martel, considéré comme le père de la spéléologie moderne.\n\nDes analyses par carottage radiochronologique uranium-thorium ont permis de dater son coeur à environ 350 000 ans (contemporain de l'homme de Tautavel).\n\nÀ l'échelle d'une vie humaine, cette durée paraît immense.\n\nÀ l'échelle d'une grotte, ce n'est pourtant qu'une étape de son histoire.\n\nUne salle qui résonne\n\nLa Salle du Temple d'Angkor possède également une acoustique exceptionnelle.\n\nElle a notamment accueilli des artistes et des manifestations musicales, dont le Festival Pablo Casals de Prades, ainsi que des créations de Daniel Tosi.\n\nDans cette immense salle, la grotte ne se découvre pas seulement avec les yeux.",
+      "audio": "/audios/fr/salle-du-temple-angkor.mp3"
+    },
+
+    "balcon-des-tenebres": {
+      "titre": "Le Balcon des Ténèbres",
+      "texte": "Un panorama vertigineux sur les profondeurs de la Terre\n\nLe Balcon des Ténèbres est un promontoire naturel situé à la lisière de la majestueuse salle du Dôme Rouge.\n\nAu-dessus de vous se trouvent d’anciennes carrières de marbre de Villefranche.\n\nDepuis ce point d’observation saisissant, vous pouvez contempler l’impressionnant Gouffre Sans Fond, un puits vertigineux qui semble s’enfoncer directement dans les entrailles de la montagne.\n\nCes formations spectaculaires sont le fruit de bouleversements géologiques survenus il y a environ 40 millions d’années.\n\nÀ cette époque, les forces titanesques de la Terre ont fissuré et sculpté le massif, donnant naissance à cette immense cavité souterraine.\n\nLa voûte du Balcon des Ténèbres s’élève à environ 30 mètres de hauteur, tandis que le Gouffre Sans Fond plonge à une profondeur de 40 mètres.\n\nUne grotte bien plus vaste\n\nMais l’exploration ne s’arrête pas ici.\n\nAu-delà du parcours aménagé, la grotte se prolonge sur plus d’une trentaine de kilomètres connus à ce jour.\n\nCe réseau souterrain dévoile des galeries mystérieuses, des rivières souterraines et de nombreuses formations minérales.\n\nLe parcours que vous venez de découvrir ne représente ainsi qu’une petite partie de l’immense réseau qui se développe sous la montagne.\n\nLe reste est a découvrir en spéléologie"
+    },
+
+    "plafond-des-excentriques": {
+      "titre": "Le Plafond des Excentriques",
+      "texte": "Pour terminer votre voyage, levez les yeux.\n\nVous observez ici des excentriques, des concrétions étonnantes dont la croissance ne suit pas la direction habituelle des stalactites.\n\nAu lieu de descendre simplement vers le sol, elles peuvent se développer dans différentes directions, formant des filaments et des formes parfois étonnantes.\n\nLeur croissance dépend notamment de la manière dont l'eau circule dans de minuscules fissures et canaux de la roche, des mouvements de l’air et de la présence de minéraux.\n\nAvec le temps, ces dépôts de calcite dessinent un véritable réseau minéral.\n\nRegardez attentivement...\n\nPeut-être reconnaîtrez-vous un cheval de cristal, un noeud de fée, un trapèze...\n\nOu peut-être verrez-vous tout autre chose.\n\nIci, c'est à votre imagination de terminer l'oeuvre.\n\nde l’autre côté de la passerelle, vous pouvez aperçevoir de fines et longues draperies formées par l’eau qui a coulé sur ce plafond incliné, si fines qu’elles laissent passer la lumière\n\nLa fin du voyage\n\nVotre découverte des Grottes des Canalettes s'achève ici.\n\nAu fil de votre parcours, vous avez découvert une petite partie de ce monde souterrain façonné par l'eau, la roche et le temps.\n\nDes premières explorations aux découvertes d'Edmond Delonca et ses compagnons d’aventure, des grandes salles aux plus délicates concrétions, chaque formation raconte une histoire qui se mesure en milliers, parfois en millions d'années.\n\nEt pourtant, la grotte continue de vivre.\n\nL'eau poursuit son chemin dans la montagne, déposant imperceptiblement de nouvelles couches de calcite et transformant encore, lentement, ce paysage souterrain.\n\nVous n'avez découvert qu'une partie de ce qui se cache sous vos pieds.\n\nAlors, avant de retrouver la lumière du jour, prenez un dernier instant pour regarder autour de vous...\n\nEt souvenez-vous : ici, le temps ne se compte pas en années, mais en millions d'années.\n\nMerci de votre visite aux Grottes des Canalettes."
+    }
   },
 
-  "salle-du-balcon": {
-    "titre": "Salle du Balcon",
-    "texte": "Depuis cette salle, admirez les volumes impressionnants de la grotte et les nombreuses concrétions qui décorent les parois."
+  "navigation": {
+    "precedent": "← Précédent",
+    "suivant": "Suivant →",
+    "changerLangue": "🌐 Changer de langue"
   },
 
-  "lac-aux-atolls": {
-    "titre": "Lac aux Atolls",
-    "texte": "Les eaux calmes du lac reflètent les concrétions et créent un paysage souterrain spectaculaire."
-  },
-
-  "salle-du-temple-angkor": {
-    "titre": "Salle du Temple d'Angkor",
-    "texte": "Cette salle monumentale évoque les temples d'Asie grâce à ses immenses colonnes naturelles et à ses reliefs remarquables."
-  },
-
-  "gouffre": {
-  "titre": "Gouffre",
-  "texte": "Le Balcon des Ténèbres est un promontoire naturel situé à la lisière de la majestueuse salle du Dôme Rouge. De ce point d’observation saisissant, les visiteurs peuvent contempler l’impressionnant gouffre sans fond, un puits vertigineux qui semble s’enfoncer dans les entrailles de la montagne.\n\nCes formations spectaculaires sont le fruit de bouleversements géologiques survenus il y a environ 40 millions d’années. À cette époque, les forces titanesques de la Terre ont fissuré et sculpté le massif, donnant naissance à cette immense cavité souterraine.\n\nLa voûte du Balcon des Ténèbres s’élève à 30 mètres de hauteur, tandis que le Gouffre Sans Fond plonge à une profondeur de 40 mètres.\n\nMais l’exploration ne s’arrête pas là. Au-delà de ce panorama vertigineux, la grotte se prolonge sur plus d’une trentaine de kilomètres, dévoilant un réseau souterrain fascinant, où se succèdent galeries mystérieuses, rivières souterraines et formations minérales d’une beauté saisissante."
-},
-
-  "plafond-des-excentriques": {
-  "titre": "Plafond des Excentriques",
-  "texte": "Levez les yeux et admirez un phénomène fascinant : le plafond des excentriques. Contrairement aux stalactites classiques qui poussent droit vers le sol, celles-ci s’étendent dans toutes les directions !\n\nCe spectacle étonnant est dû à plusieurs forces invisibles : les champs magnétiques, les courants d’air et le cheminement de l’eau dans la roche. Ces éléments perturbent la croissance des concrétions, qui s’allongent alors en filaments délicats, semblables à de la dentelle.\n\nRegardez bien… Parmi ces formations uniques, vous pourriez distinguer un cheval de cristal, un nœud de fée ou encore un trapèze. Et pour le reste, laissez parler votre imagination !"
-},
-
-"navigation": {
-  "precedent": "← Précédent",
-  "suivant": "Suivant →",
-  "changerLangue": "🌐 Changer de langue"
-},
-
-"interface": {
-  "etape": "Étape",
-  "sur": "sur",
-  "erreurSalle": "Erreur : salle introuvable",
-  "erreurChargement": "Erreur de chargement"
-},
-
-"accueil": {
-  "titre": "Grottes des Canalettes",
-  "sousTitre": "Laissez-vous guider au cœur de la montagne catalane",
-  "description": "Une exploration sonore des merveilles souterraines des Grottes des Canalettes",
-  "info": "🎧 Visite audio gratuite • 📱 Disponible hors connexion"
-}
+  "interface": {
+    "etape": "Étape",
+    "sur": "sur",
+    "erreurSalle": "Erreur : salle introuvable",
+    "erreurChargement": "Erreur de chargement"
+  }
 }

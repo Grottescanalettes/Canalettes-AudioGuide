@@ -1,554 +1,280 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+  <title>Grottes des Canalettes</title>
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
-<title>Grottes des Canalettes - Visite</title>
-
-<link
-  rel="stylesheet"
-  href="/style.css"
->
-
+  <link rel="stylesheet" href="../style.css">
 </head>
 
+<body class="salle-page">
 
-<body>
+  <main class="conteneur-salle">
 
-<main class="salle-page">
+    <a href="../index.html" class="retour-accueil">
+      🏠 Accueil
+    </a>
 
-  <!-- Retour -->
+    <h1 id="titre-salle">Chargement...</h1>
 
-  <a
-    href="/langues/francais.html"
-    class="retour"
-    id="lien-retour"
-  >
-    ← Retour aux étapes
-  </a>
+    <div class="choix-visite">
+      <button id="bouton-audio" class="bouton-visite actif">
+        🎧 Écouter
+      </button>
 
-
-  <!-- Titre de la salle -->
-
-  <h1 id="titre-salle">
-    Chargement...
-  </h1>
-
-
-  <!-- Choix du mode de visite -->
-
-  <div class="choix-visite">
-
-    <button
-      type="button"
-      id="bouton-audio"
-      class="bouton-visite actif"
-    >
-      🎧 Écouter
-    </button>
-
-    <button
-      type="button"
-      id="bouton-texte"
-      class="bouton-visite"
-    >
-      📖 Lire
-    </button>
-
-  </div>
-
-
-  <!-- ========================= -->
-  <!-- BLOC AUDIO -->
-  <!-- ========================= -->
-
-  <section
-    id="bloc-audio"
-    class="bloc-visite"
-  >
-
-    <h2>
-      🎧 Écouter la visite
-    </h2>
-
-    <p id="description-audio">
-      Laissez-vous guider et prenez le temps d’observer la grotte autour de vous.
-    </p>
-
-    <audio
-      id="audio-salle"
-      controls
-      preload="none"
-    >
-      Votre navigateur ne peut pas lire cet audio.
-    </audio>
-
-    <p
-      id="audio-indisponible"
-      style="display:none;"
-    >
-      L’audio de cette étape sera bientôt disponible.
-    </p>
-
-  </section>
-
-
-  <!-- ========================= -->
-  <!-- BLOC TEXTE -->
-  <!-- ========================= -->
-
-  <section
-    id="bloc-texte"
-    class="bloc-visite"
-    style="display:none;"
-  >
-
-    <h2>
-      📖 Lire la visite
-    </h2>
-
-    <div id="texte-salle">
-      Chargement du texte...
+      <button id="bouton-texte" class="bouton-visite">
+        📖 Lire
+      </button>
     </div>
 
-  </section>
+    <section id="bloc-audio" class="bloc-visite">
+      <audio id="lecteur-audio" controls>
+        <source id="source-audio" src="" type="audio/mpeg">
+        Votre navigateur ne prend pas en charge la lecture audio.
+      </audio>
 
+      <p id="message-audio">
+        Utilisez le lecteur ci-dessus pour écouter la visite.
+      </p>
+    </section>
 
-</main>
+    <section id="bloc-texte" class="bloc-visite" style="display: none;">
+      <div id="texte-salle"></div>
+    </section>
 
+    <!-- NAVIGATION ENTRE LES SALLES -->
+    <nav class="navigation-salles">
 
-<script>
+      <a id="bouton-precedent" class="navigation-salle precedent" href="#">
+        ← Salle précédente
+      </a>
 
-document.addEventListener("DOMContentLoaded", function () {
+      <a id="bouton-suivant" class="navigation-salle suivant" href="#">
+        Salle suivante →
+      </a>
 
+    </nav>
 
-  /* =========================================
-     RÉCUPÉRATION DES PARAMÈTRES
-     ========================================= */
+    <a href="../index.html" class="retour-accueil bas">
+      🏠 Retour à l'accueil
+    </a>
 
-  const params = new URLSearchParams(window.location.search);
+  </main>
 
-  const salle =
-    params.get("salle") || "salle-blanche";
+  <script>
+    const params = new URLSearchParams(window.location.search);
 
-  const langue =
-    params.get("lang") || "fr";
+    const langue = params.get("lang") || "fr";
+    const salleActuelle = params.get("salle");
 
+    /*
+      ORDRE OFFICIEL DU PARCOURS
+    */
+    const parcours = [
+      "galerie-acces",
+      "salle-fontaine",
+      "couloir-des-cupules",
+      "salle-blanche",
+      "salle-du-balcon",
+      "armandines",
+      "lac-aux-atolls",
+      "petit-lac",
+      "salle-du-temple-angkor",
+      "balcon-des-tenebres",
+      "plafond-des-excentriques"
+    ];
 
-  /* =========================================
-     LANGUES AUTORISÉES
-     ========================================= */
+    const boutonAudio = document.getElementById("bouton-audio");
+    const boutonTexte = document.getElementById("bouton-texte");
 
-  const languesDisponibles = [
-    "fr",
-    "en",
-    "es",
-    "ca",
-    "de",
-    "ru",
-    "it"
-  ];
+    const blocAudio = document.getElementById("bloc-audio");
+    const blocTexte = document.getElementById("bloc-texte");
 
+    const lecteurAudio = document.getElementById("lecteur-audio");
+    const sourceAudio = document.getElementById("source-audio");
 
-  const langueFinale =
-    languesDisponibles.includes(langue)
-      ? langue
-      : "fr";
+    const titreSalle = document.getElementById("titre-salle");
+    const texteSalle = document.getElementById("texte-salle");
 
+    const boutonPrecedent = document.getElementById("bouton-precedent");
+    const boutonSuivant = document.getElementById("bouton-suivant");
 
-  /* =========================================
-     NOMS DES PAGES DE LANGUES
-     ========================================= */
+    /*
+      BOUTON AUDIO
+    */
+    boutonAudio.addEventListener("click", () => {
 
-  const pagesLangues = {
+      boutonAudio.classList.add("actif");
+      boutonTexte.classList.remove("actif");
 
-    fr: "francais.html",
-    en: "anglais.html",
-    es: "espagnol.html",
-    ca: "catalan.html",
-    de: "allemand.html",
-    ru: "russe.html",
-    it: "italien.html"
+      blocAudio.style.display = "block";
+      blocTexte.style.display = "none";
 
-  };
+    });
 
+    /*
+      BOUTON TEXTE
+    */
+    boutonTexte.addEventListener("click", () => {
 
-  /* =========================================
-     TEXTES DES BOUTONS
-     ========================================= */
+      boutonTexte.classList.add("actif");
+      boutonAudio.classList.remove("actif");
 
-  const traductions = {
+      blocTexte.style.display = "block";
+      blocAudio.style.display = "none";
 
-    fr: {
-      retour: "← Retour aux étapes",
-      audioTitre: "🎧 Écouter la visite",
-      texteTitre: "📖 Lire la visite",
-      descriptionAudio:
-        "Laissez-vous guider et prenez le temps d’observer la grotte autour de vous.",
-      audioIndisponible:
-        "L’audio de cette étape sera bientôt disponible.",
-      chargement:
-        "Chargement du texte...",
-      erreur:
-        "Impossible de charger le contenu de cette salle."
-    },
+    });
 
-    en: {
-      retour: "← Back to the stages",
-      audioTitre: "🎧 Listen to the tour",
-      texteTitre: "📖 Read the tour",
-      descriptionAudio:
-        "Let yourself be guided and take the time to observe the cave around you.",
-      audioIndisponible:
-        "The audio for this stage will be available soon.",
-      chargement:
-        "Loading text...",
-      erreur:
-        "Unable to load this room's content."
-    },
+    /*
+      NAVIGATION ENTRE LES SALLES
+    */
+    function configurerNavigation() {
 
-    es: {
-      retour: "← Volver a las etapas",
-      audioTitre: "🎧 Escuchar la visita",
-      texteTitre: "📖 Leer la visita",
-      descriptionAudio:
-        "Déjese guiar y tómese el tiempo para observar la cueva que le rodea.",
-      audioIndisponible:
-        "El audio de esta etapa estará disponible próximamente.",
-      chargement:
-        "Cargando texto...",
-      erreur:
-        "No se puede cargar el contenido de esta sala."
-    },
+      const index = parcours.indexOf(salleActuelle);
 
-    ca: {
-      retour: "← Tornar a les etapes",
-      audioTitre: "🎧 Escoltar la visita",
-      texteTitre: "📖 Llegir la visita",
-      descriptionAudio:
-        "Deixeu-vos guiar i preneu-vos el temps d’observar la cova que us envolta.",
-      audioIndisponible:
-        "L’àudio d’aquesta etapa estarà disponible aviat.",
-      chargement:
-        "Carregant el text...",
-      erreur:
-        "No s’ha pogut carregar el contingut d’aquesta sala."
-    },
-
-    de: {
-      retour: "← Zurück zu den Stationen",
-      audioTitre: "🎧 Führung anhören",
-      texteTitre: "📖 Führung lesen",
-      descriptionAudio:
-        "Lassen Sie sich führen und nehmen Sie sich Zeit, die Höhle um sich herum zu beobachten.",
-      audioIndisponible:
-        "Der Audioguide für diese Station wird bald verfügbar sein.",
-      chargement:
-        "Text wird geladen...",
-      erreur:
-        "Der Inhalt dieses Raumes konnte nicht geladen werden."
-    },
-
-    ru: {
-      retour: "← Вернуться к этапам",
-      audioTitre: "🎧 Слушать экскурсию",
-      texteTitre: "📖 Читать экскурсию",
-      descriptionAudio:
-        "Позвольте экскурсии вести вас и найдите время, чтобы осмотреть пещеру вокруг себя.",
-      audioIndisponible:
-        "Аудиогид для этого этапа скоро будет доступен.",
-      chargement:
-        "Загрузка текста...",
-      erreur:
-        "Не удалось загрузить содержимое этого зала."
-    },
-
-    it: {
-      retour: "← Torna alle tappe",
-      audioTitre: "🎧 Ascolta la visita",
-      texteTitre: "📖 Leggi la visita",
-      descriptionAudio:
-        "Lasciati guidare e prenditi il tempo per osservare la grotta intorno a te.",
-      audioIndisponible:
-        "L’audio di questa tappa sarà presto disponibile.",
-      chargement:
-        "Caricamento del testo...",
-      erreur:
-        "Impossibile caricare il contenuto di questa sala."
-    }
-
-  };
-
-
-  const traduction =
-    traductions[langueFinale];
-
-
-  /* =========================================
-     CONFIGURATION DE LA PAGE
-     ========================================= */
-
-  document.documentElement.lang =
-    langueFinale;
-
-
-  document.getElementById("lien-retour").href =
-    "/langues/" + pagesLangues[langueFinale];
-
-
-  document.getElementById("lien-retour").textContent =
-    traduction.retour;
-
-
-  document.querySelector("#bloc-audio h2").textContent =
-    traduction.audioTitre;
-
-
-  document.querySelector("#bloc-texte h2").textContent =
-    traduction.texteTitre;
-
-
-  document.getElementById("description-audio").textContent =
-    traduction.descriptionAudio;
-
-
-  document.getElementById("audio-indisponible").textContent =
-    traduction.audioIndisponible;
-
-
-  document.getElementById("texte-salle").textContent =
-    traduction.chargement;
-
-
-  /* =========================================
-     FICHIERS JSON
-     ========================================= */
-
-  const fichierTexte =
-    "/textes/" + langueFinale + ".json";
-
-
-  /* =========================================
-     CHARGEMENT DU CONTENU
-     ========================================= */
-
-  fetch(fichierTexte)
-
-    .then(function (response) {
-
-      if (!response.ok) {
-
-        throw new Error(
-          "Impossible de charger " + fichierTexte
-        );
-
+      if (index === -1) {
+        boutonPrecedent.style.display = "none";
+        boutonSuivant.style.display = "none";
+        return;
       }
 
-      return response.json();
+      /*
+        SALLE PRÉCÉDENTE
+      */
+      if (index > 0) {
 
-    })
+        const sallePrecedente = parcours[index - 1];
 
+        boutonPrecedent.href =
+          `salle.html?lang=${langue}&salle=${sallePrecedente}`;
 
-    .then(function (data) {
-
-
-      /* ==============================
-         VÉRIFICATION DE LA SALLE
-         ============================== */
-
-      if (!data.salles || !data.salles[salle]) {
-
-        throw new Error(
-          "Salle introuvable : " + salle
-        );
-
-      }
-
-
-      const contenu =
-        data.salles[salle];
-
-
-      /* ==============================
-         TITRE
-         ============================== */
-
-      document.title =
-        contenu.titre +
-        " - Grottes des Canalettes";
-
-
-      document.getElementById("titre-salle").textContent =
-        contenu.titre;
-
-
-      /* ==============================
-         TEXTE
-         ============================== */
-
-      const texte =
-        contenu.texte || "";
-
-
-      const paragraphes =
-        texte
-          .split(/\n\s*\n/)
-          .filter(function (paragraphe) {
-            return paragraphe.trim() !== "";
-          });
-
-
-      document.getElementById("texte-salle").innerHTML =
-        paragraphes
-          .map(function (paragraphe) {
-
-            return "<p>" +
-              paragraphe
-                .trim()
-                .replace(/\n/g, "<br>") +
-              "</p>";
-
-          })
-          .join("");
-
-
-      /* ==============================
-         AUDIO
-         ============================== */
-
-      const audio =
-        document.getElementById("audio-salle");
-
-      const blocAudio =
-        document.getElementById("bloc-audio");
-
-      const boutonAudio =
-        document.getElementById("bouton-audio");
-
-
-      if (contenu.audio && contenu.audio.trim() !== "") {
-
-        audio.src =
-          contenu.audio;
-
+        boutonPrecedent.style.display = "flex";
 
       } else {
 
-        audio.style.display =
-          "none";
-
-        document.getElementById("audio-indisponible").style.display =
-          "block";
-
-        boutonAudio.style.display =
-          "none";
-
-        /*
-         * Si aucun audio n'existe,
-         * on affiche directement le texte.
-         */
-
-        blocAudio.style.display =
-          "none";
-
-        document.getElementById("bloc-texte").style.display =
-          "block";
-
-        document.getElementById("bouton-texte").classList.add("actif");
+        boutonPrecedent.style.display = "none";
 
       }
 
-    })
+      /*
+        SALLE SUIVANTE
+      */
+      if (index < parcours.length - 1) {
 
+        const salleSuivante = parcours[index + 1];
 
-    .catch(function (error) {
+        boutonSuivant.href =
+          `salle.html?lang=${langue}&salle=${salleSuivante}`;
 
-      console.error(
-        "Erreur :",
-        error
-      );
+        boutonSuivant.style.display = "flex";
 
+      } else {
 
-      document.getElementById("titre-salle").textContent =
-        "Erreur";
+        boutonSuivant.style.display = "none";
 
+      }
 
-      document.getElementById("texte-salle").textContent =
-        traduction.erreur;
+    }
 
+    /*
+      CHARGEMENT DU TEXTE
+    */
+    async function chargerSalle() {
 
-      document.getElementById("bloc-audio").style.display =
-        "none";
+      try {
 
+        const reponse = await fetch(`../textes/${langue}.json`);
 
-      document.getElementById("bloc-texte").style.display =
-        "block";
+        if (!reponse.ok) {
+          throw new Error("Impossible de charger le fichier de langue.");
+        }
 
-    });
+        const data = await reponse.json();
 
+        if (!data.salles || !data.salles[salleActuelle]) {
 
-  /* =========================================
-     BOUTON AUDIO
-     ========================================= */
+          titreSalle.textContent = "Erreur : salle introuvable";
+          blocAudio.style.display = "none";
+          blocTexte.style.display = "none";
 
-  document.getElementById("bouton-audio")
-    .addEventListener("click", function () {
+          return;
+        }
 
+        const contenu = data.salles[salleActuelle];
 
-      document.getElementById("bloc-audio").style.display =
-        "block";
+        /*
+          TITRE
+        */
+        titreSalle.textContent = contenu.titre;
 
+        /*
+          TEXTE
+        */
+        texteSalle.innerHTML = "";
 
-      document.getElementById("bloc-texte").style.display =
-        "none";
+        if (contenu.texte) {
 
+          const paragraphes = contenu.texte.split("\n\n");
 
-      document.getElementById("bouton-audio").classList.add("actif");
+          paragraphes.forEach(paragraphe => {
 
+            const p = document.createElement("p");
 
-      document.getElementById("bouton-texte").classList.remove("actif");
+            p.textContent = paragraphe;
 
-    });
+            texteSalle.appendChild(p);
 
+          });
 
-  /* =========================================
-     BOUTON TEXTE
-     ========================================= */
+        }
 
-  document.getElementById("bouton-texte")
-    .addEventListener("click", function () {
+        /*
+          AUDIO
+        */
+        if (contenu.audio) {
 
+          sourceAudio.src = contenu.audio;
 
-      document.getElementById("bloc-audio").style.display =
-        "none";
+          lecteurAudio.load();
 
+          blocAudio.style.display = "block";
 
-      document.getElementById("bloc-texte").style.display =
-        "block";
+          boutonAudio.style.display = "inline-flex";
 
+        } else {
 
-      document.getElementById("bouton-texte").classList.add("actif");
+          blocAudio.style.display = "none";
 
+          boutonAudio.style.display = "none";
 
-      document.getElementById("bouton-audio").classList.remove("actif");
+          boutonTexte.classList.add("actif");
+          blocTexte.style.display = "block";
 
-    });
+        }
 
+        /*
+          NAVIGATION
+        */
+        configurerNavigation();
 
-});
+      } catch (erreur) {
 
-</script>
+        console.error(erreur);
 
+        titreSalle.textContent = "Erreur de chargement";
+
+        blocAudio.style.display = "none";
+        blocTexte.style.display = "none";
+
+      }
+
+    }
+
+    chargerSalle();
+
+  </script>
 
 </body>
-
 </html>
-```
