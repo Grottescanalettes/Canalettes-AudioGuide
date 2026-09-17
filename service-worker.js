@@ -1,4 +1,4 @@
-const CACHE_NAME = "canalettes-audio-v33";
+const CACHE_NAME = "canalettes-audio-v35";
 
 const FILES_TO_CACHE = [
   "/",
