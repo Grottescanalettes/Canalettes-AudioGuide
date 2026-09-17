@@ -1,280 +1,708 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Grottes des Canalettes</title>
 
-  <link rel="stylesheet" href="../style.css">
+  <link
+    rel="stylesheet"
+    href="../style.css"
+  >
+
 </head>
+
 
 <body class="salle-page">
 
+
   <main class="conteneur-salle">
 
-    <a href="../index.html" class="retour-accueil">
+
+    <!-- RETOUR ACCUEIL -->
+
+    <a
+      href="../index.html"
+      class="retour-accueil"
+    >
       🏠 Accueil
     </a>
 
-    <h1 id="titre-salle">Chargement...</h1>
+
+    <!-- TITRE -->
+
+    <h1 id="titre-salle">
+      Chargement...
+    </h1>
+
+
+    <!-- CHOIX AUDIO / TEXTE -->
 
     <div class="choix-visite">
-      <button id="bouton-audio" class="bouton-visite actif">
+
+      <button
+        id="bouton-audio"
+        class="bouton-visite actif"
+      >
         🎧 Écouter
       </button>
 
-      <button id="bouton-texte" class="bouton-visite">
+
+      <button
+        id="bouton-texte"
+        class="bouton-visite"
+      >
         📖 Lire
       </button>
+
     </div>
 
-    <section id="bloc-audio" class="bloc-visite">
-      <audio id="lecteur-audio" controls>
-        <source id="source-audio" src="" type="audio/mpeg">
+
+    <!-- BLOC AUDIO -->
+
+    <section
+      id="bloc-audio"
+      class="bloc-visite"
+    >
+
+      <audio
+        id="lecteur-audio"
+        controls
+        preload="metadata"
+      >
+
+        <source
+          id="source-audio"
+          src=""
+          type="audio/mpeg"
+        >
+
         Votre navigateur ne prend pas en charge la lecture audio.
+
       </audio>
+
 
       <p id="message-audio">
         Utilisez le lecteur ci-dessus pour écouter la visite.
       </p>
+
     </section>
 
-    <section id="bloc-texte" class="bloc-visite" style="display: none;">
+
+    <!-- BLOC TEXTE -->
+
+    <section
+      id="bloc-texte"
+      class="bloc-visite"
+      style="display: none;"
+    >
+
       <div id="texte-salle"></div>
+
     </section>
+
 
     <!-- NAVIGATION ENTRE LES SALLES -->
+
     <nav class="navigation-salles">
 
-      <a id="bouton-precedent" class="navigation-salle precedent" href="#">
+
+      <a
+        id="bouton-precedent"
+        class="navigation-salle precedent"
+        href="#"
+      >
         ← Salle précédente
       </a>
 
-      <a id="bouton-suivant" class="navigation-salle suivant" href="#">
+
+      <a
+        id="bouton-suivant"
+        class="navigation-salle suivant"
+        href="#"
+      >
         Salle suivante →
       </a>
 
+
     </nav>
 
-    <a href="../index.html" class="retour-accueil bas">
+
+    <!-- RETOUR ACCUEIL BAS -->
+
+    <a
+      href="../index.html"
+      class="retour-accueil bas"
+    >
       🏠 Retour à l'accueil
     </a>
 
+
   </main>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
 
-    const langue = params.get("lang") || "fr";
-    const salleActuelle = params.get("salle");
+  <script>
+
 
     /*
-      ORDRE OFFICIEL DU PARCOURS
+      =========================================
+      PARAMÈTRES DE L'URL
+      =========================================
     */
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+
+    const langue =
+      params.get("lang") || "fr";
+
+
+    const salleActuelle =
+      params.get("salle");
+
+
+    /*
+      =========================================
+      ORDRE OFFICIEL DU PARCOURS
+      =========================================
+    */
+
     const parcours = [
+
       "galerie-acces",
+
       "salle-fontaine",
+
       "couloir-des-cupules",
+
       "salle-blanche",
+
       "salle-du-balcon",
+
       "armandines",
+
       "lac-aux-atolls",
+
       "petit-lac",
+
       "salle-du-temple-angkor",
+
       "balcon-des-tenebres",
+
       "plafond-des-excentriques"
+
     ];
 
-    const boutonAudio = document.getElementById("bouton-audio");
-    const boutonTexte = document.getElementById("bouton-texte");
-
-    const blocAudio = document.getElementById("bloc-audio");
-    const blocTexte = document.getElementById("bloc-texte");
-
-    const lecteurAudio = document.getElementById("lecteur-audio");
-    const sourceAudio = document.getElementById("source-audio");
-
-    const titreSalle = document.getElementById("titre-salle");
-    const texteSalle = document.getElementById("texte-salle");
-
-    const boutonPrecedent = document.getElementById("bouton-precedent");
-    const boutonSuivant = document.getElementById("bouton-suivant");
 
     /*
-      BOUTON AUDIO
+      =========================================
+      RÉCUPÉRATION DES ÉLÉMENTS
+      =========================================
     */
+
+    const boutonAudio =
+      document.getElementById("bouton-audio");
+
+
+    const boutonTexte =
+      document.getElementById("bouton-texte");
+
+
+    const blocAudio =
+      document.getElementById("bloc-audio");
+
+
+    const blocTexte =
+      document.getElementById("bloc-texte");
+
+
+    const lecteurAudio =
+      document.getElementById("lecteur-audio");
+
+
+    const sourceAudio =
+      document.getElementById("source-audio");
+
+
+    const titreSalle =
+      document.getElementById("titre-salle");
+
+
+    const texteSalle =
+      document.getElementById("texte-salle");
+
+
+    const messageAudio =
+      document.getElementById("message-audio");
+
+
+    const boutonPrecedent =
+      document.getElementById("bouton-precedent");
+
+
+    const boutonSuivant =
+      document.getElementById("bouton-suivant");
+
+
+    /*
+      =========================================
+      BOUTON AUDIO
+      =========================================
+    */
+
     boutonAudio.addEventListener("click", () => {
 
+
       boutonAudio.classList.add("actif");
+
+
       boutonTexte.classList.remove("actif");
 
+
       blocAudio.style.display = "block";
+
+
       blocTexte.style.display = "none";
 
+
     });
 
+
     /*
+      =========================================
       BOUTON TEXTE
+      =========================================
     */
+
     boutonTexte.addEventListener("click", () => {
 
+
       boutonTexte.classList.add("actif");
+
+
       boutonAudio.classList.remove("actif");
 
+
       blocTexte.style.display = "block";
+
+
       blocAudio.style.display = "none";
+
 
     });
 
+
     /*
+      =========================================
       NAVIGATION ENTRE LES SALLES
+      =========================================
     */
+
     function configurerNavigation() {
 
-      const index = parcours.indexOf(salleActuelle);
 
-      if (index === -1) {
-        boutonPrecedent.style.display = "none";
-        boutonSuivant.style.display = "none";
-        return;
-      }
+      const index =
+        parcours.indexOf(salleActuelle);
+
 
       /*
-        SALLE PRÉCÉDENTE
+        Salle inconnue
       */
+
+      if (index === -1) {
+
+        boutonPrecedent.style.display = "none";
+
+        boutonSuivant.style.display = "none";
+
+        return;
+
+      }
+
+
+      /*
+        =======================================
+        SALLE PRÉCÉDENTE
+        =======================================
+      */
+
       if (index > 0) {
 
-        const sallePrecedente = parcours[index - 1];
+
+        const sallePrecedente =
+          parcours[index - 1];
+
 
         boutonPrecedent.href =
-          `salle.html?lang=${langue}&salle=${sallePrecedente}`;
+          `salle.html?lang=${encodeURIComponent(langue)}&salle=${encodeURIComponent(sallePrecedente)}`;
+
 
         boutonPrecedent.style.display = "flex";
 
+
       } else {
+
 
         boutonPrecedent.style.display = "none";
 
+
       }
 
+
       /*
+        =======================================
         SALLE SUIVANTE
+        =======================================
       */
+
       if (index < parcours.length - 1) {
 
-        const salleSuivante = parcours[index + 1];
+
+        const salleSuivante =
+          parcours[index + 1];
+
 
         boutonSuivant.href =
-          `salle.html?lang=${langue}&salle=${salleSuivante}`;
+          `salle.html?lang=${encodeURIComponent(langue)}&salle=${encodeURIComponent(salleSuivante)}`;
+
 
         boutonSuivant.style.display = "flex";
 
+
       } else {
+
 
         boutonSuivant.style.display = "none";
 
+
       }
 
     }
 
+
     /*
-      CHARGEMENT DU TEXTE
+      =========================================
+      CHARGEMENT DE LA SALLE
+      =========================================
     */
+
     async function chargerSalle() {
+
 
       try {
 
-        const reponse = await fetch(`../textes/${langue}.json`);
+
+        /*
+          On ajoute ?v=33 pour éviter que
+          le téléphone utilise une ancienne
+          version du fichier JSON.
+        */
+
+        const urlTexte =
+          `../textes/${encodeURIComponent(langue)}.json?v=33`;
+
+
+        const reponse =
+          await fetch(
+            urlTexte,
+            {
+              cache: "no-store"
+            }
+          );
+
+
+        /*
+          Vérification de la réponse
+        */
 
         if (!reponse.ok) {
-          throw new Error("Impossible de charger le fichier de langue.");
+
+          throw new Error(
+            "Impossible de charger le fichier de langue."
+          );
+
         }
 
-        const data = await reponse.json();
 
-        if (!data.salles || !data.salles[salleActuelle]) {
+        /*
+          Conversion JSON
+        */
 
-          titreSalle.textContent = "Erreur : salle introuvable";
-          blocAudio.style.display = "none";
-          blocTexte.style.display = "none";
+        const data =
+          await reponse.json();
+
+
+        /*
+          Vérification de la structure
+        */
+
+        if (
+          !data.salles ||
+          !salleActuelle ||
+          !data.salles[salleActuelle]
+        ) {
+
+
+          titreSalle.textContent =
+            "Erreur : salle introuvable";
+
+
+          blocAudio.style.display =
+            "none";
+
+
+          blocTexte.style.display =
+            "none";
+
+
+          boutonAudio.style.display =
+            "none";
+
+
+          boutonTexte.style.display =
+            "none";
+
 
           return;
+
         }
 
-        const contenu = data.salles[salleActuelle];
 
         /*
+          Récupération de la salle
+        */
+
+        const contenu =
+          data.salles[salleActuelle];
+
+
+        /*
+          =======================================
           TITRE
+          =======================================
         */
-        titreSalle.textContent = contenu.titre;
+
+        titreSalle.textContent =
+          contenu.titre || "Grottes des Canalettes";
+
 
         /*
+          =======================================
           TEXTE
+          =======================================
         */
+
         texteSalle.innerHTML = "";
+
 
         if (contenu.texte) {
 
-          const paragraphes = contenu.texte.split("\n\n");
+
+          const paragraphes =
+            contenu.texte.split("\n\n");
+
 
           paragraphes.forEach(paragraphe => {
 
-            const p = document.createElement("p");
 
-            p.textContent = paragraphe;
+            const p =
+              document.createElement("p");
 
-            texteSalle.appendChild(p);
+
+            p.textContent =
+              paragraphe.trim();
+
+
+            if (paragraphe.trim() !== "") {
+
+              texteSalle.appendChild(p);
+
+            }
+
 
           });
 
-        }
-
-        /*
-          AUDIO
-        */
-        if (contenu.audio) {
-
-          sourceAudio.src = contenu.audio;
-
-          lecteurAudio.load();
-
-          blocAudio.style.display = "block";
-
-          boutonAudio.style.display = "inline-flex";
 
         } else {
 
-          blocAudio.style.display = "none";
 
-          boutonAudio.style.display = "none";
+          const p =
+            document.createElement("p");
 
-          boutonTexte.classList.add("actif");
-          blocTexte.style.display = "block";
+
+          p.textContent =
+            "Le texte de cette salle n'est pas disponible.";
+
+
+          texteSalle.appendChild(p);
 
         }
 
+
         /*
-          NAVIGATION
+          =======================================
+          AUDIO
+          =======================================
         */
+
+        if (contenu.audio) {
+
+
+          /*
+            Construction de l'URL audio
+          */
+
+          let urlAudio =
+            contenu.audio;
+
+
+          /*
+            On ajoute également une version
+            pour éviter les anciens fichiers
+            mis en cache par le téléphone.
+          */
+
+          const separateur =
+            urlAudio.includes("?")
+              ? "&"
+              : "?";
+
+
+          urlAudio =
+            `${urlAudio}${separateur}v=33`;
+
+
+          /*
+            Mise à jour du lecteur
+          */
+
+          sourceAudio.src =
+            urlAudio;
+
+
+          /*
+            Important :
+            on recharge complètement le lecteur.
+          */
+
+          lecteurAudio.pause();
+
+
+          lecteurAudio.currentTime = 0;
+
+
+          lecteurAudio.load();
+
+
+          /*
+            Affichage audio
+          */
+
+          blocAudio.style.display =
+            "block";
+
+
+          boutonAudio.style.display =
+            "inline-flex";
+
+
+          messageAudio.textContent =
+            "Utilisez le lecteur ci-dessus pour écouter la visite.";
+
+
+        } else {
+
+
+          /*
+            Pas d'audio pour cette salle :
+            on affiche directement le texte.
+          */
+
+          blocAudio.style.display =
+            "none";
+
+
+          boutonAudio.style.display =
+            "none";
+
+
+          boutonTexte.classList.add("actif");
+
+
+          blocTexte.style.display =
+            "block";
+
+
+        }
+
+
+        /*
+          =======================================
+          NAVIGATION
+          =======================================
+        */
+
         configurerNavigation();
+
 
       } catch (erreur) {
 
-        console.error(erreur);
 
-        titreSalle.textContent = "Erreur de chargement";
+        /*
+          Affichage de l'erreur dans la console
+        */
 
-        blocAudio.style.display = "none";
-        blocTexte.style.display = "none";
+        console.error(
+          "Erreur lors du chargement de la salle :",
+          erreur
+        );
+
+
+        /*
+          Affichage utilisateur
+        */
+
+        titreSalle.textContent =
+          "Erreur de chargement";
+
+
+        blocAudio.style.display =
+          "none";
+
+
+        blocTexte.style.display =
+          "block";
+
+
+        texteSalle.innerHTML =
+          "<p>Impossible de charger le contenu de cette salle. Vérifiez votre connexion puis rechargez la page.</p>";
+
 
       }
 
     }
 
+
+    /*
+      =========================================
+      LANCEMENT
+      =========================================
+    */
+
     chargerSalle();
+
 
   </script>
 
+
 </body>
+
 </html>
