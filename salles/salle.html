@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,205 +6,549 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-<title>Grottes des Canalettes</title>
+<title>Grottes des Canalettes - Visite</title>
 
-<link rel="stylesheet" href="../style.css">
+<link
+  rel="stylesheet"
+  href="/style.css"
+>
 
 </head>
 
+
 <body>
 
-<div class="hero">
+<main class="salle-page">
 
-<div class="overlay"></div>
+  <!-- Retour -->
 
-<div class="content">
+  <a
+    href="/langues/francais.html"
+    class="retour"
+    id="lien-retour"
+  >
+    ← Retour aux étapes
+  </a>
 
-<h1 id="titre-salle">
-Chargement...
-</h1>
 
-<h2>
-Grottes des Canalettes
-</h2>
+  <!-- Titre de la salle -->
 
-<div id="progression"></div>
+  <h1 id="titre-salle">
+    Chargement...
+  </h1>
 
-<div id="contenu-salle"></div>
 
-<div class="navigation-salles">
+  <!-- Choix du mode de visite -->
 
-<a id="precedent" class="retour"></a>
+  <div class="choix-visite">
 
-<a id="suivant" class="retour"></a>
+    <button
+      type="button"
+      id="bouton-audio"
+      class="bouton-visite actif"
+    >
+      🎧 Écouter
+    </button>
 
-</div>
+    <button
+      type="button"
+      id="bouton-texte"
+      class="bouton-visite"
+    >
+      📖 Lire
+    </button>
 
-</div>
+  </div>
 
-</div>
+
+  <!-- ========================= -->
+  <!-- BLOC AUDIO -->
+  <!-- ========================= -->
+
+  <section
+    id="bloc-audio"
+    class="bloc-visite"
+  >
+
+    <h2>
+      🎧 Écouter la visite
+    </h2>
+
+    <p id="description-audio">
+      Laissez-vous guider et prenez le temps d’observer la grotte autour de vous.
+    </p>
+
+    <audio
+      id="audio-salle"
+      controls
+      preload="none"
+    >
+      Votre navigateur ne peut pas lire cet audio.
+    </audio>
+
+    <p
+      id="audio-indisponible"
+      style="display:none;"
+    >
+      L’audio de cette étape sera bientôt disponible.
+    </p>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- BLOC TEXTE -->
+  <!-- ========================= -->
+
+  <section
+    id="bloc-texte"
+    class="bloc-visite"
+    style="display:none;"
+  >
+
+    <h2>
+      📖 Lire la visite
+    </h2>
+
+    <div id="texte-salle">
+      Chargement du texte...
+    </div>
+
+  </section>
+
+
+</main>
+
 
 <script>
 
-let langue = localStorage.getItem("langue") || "fr";
+document.addEventListener("DOMContentLoaded", function () {
+
+
+  /* =========================================
+     RÉCUPÉRATION DES PARAMÈTRES
+     ========================================= */
+
+  const params = new URLSearchParams(window.location.search);
+
+  const salle =
+    params.get("salle") || "salle-blanche";
+
+  const langue =
+    params.get("lang") || "fr";
+
+
+  /* =========================================
+     LANGUES AUTORISÉES
+     ========================================= */
+
+  const languesDisponibles = [
+    "fr",
+    "en",
+    "es",
+    "ca",
+    "de",
+    "ru",
+    "it"
+  ];
+
+
+  const langueFinale =
+    languesDisponibles.includes(langue)
+      ? langue
+      : "fr";
+
+
+  /* =========================================
+     NOMS DES PAGES DE LANGUES
+     ========================================= */
+
+  const pagesLangues = {
+
+    fr: "francais.html",
+    en: "anglais.html",
+    es: "espagnol.html",
+    ca: "catalan.html",
+    de: "allemand.html",
+    ru: "russe.html",
+    it: "italien.html"
+
+  };
+
+
+  /* =========================================
+     TEXTES DES BOUTONS
+     ========================================= */
+
+  const traductions = {
+
+    fr: {
+      retour: "← Retour aux étapes",
+      audioTitre: "🎧 Écouter la visite",
+      texteTitre: "📖 Lire la visite",
+      descriptionAudio:
+        "Laissez-vous guider et prenez le temps d’observer la grotte autour de vous.",
+      audioIndisponible:
+        "L’audio de cette étape sera bientôt disponible.",
+      chargement:
+        "Chargement du texte...",
+      erreur:
+        "Impossible de charger le contenu de cette salle."
+    },
+
+    en: {
+      retour: "← Back to the stages",
+      audioTitre: "🎧 Listen to the tour",
+      texteTitre: "📖 Read the tour",
+      descriptionAudio:
+        "Let yourself be guided and take the time to observe the cave around you.",
+      audioIndisponible:
+        "The audio for this stage will be available soon.",
+      chargement:
+        "Loading text...",
+      erreur:
+        "Unable to load this room's content."
+    },
+
+    es: {
+      retour: "← Volver a las etapas",
+      audioTitre: "🎧 Escuchar la visita",
+      texteTitre: "📖 Leer la visita",
+      descriptionAudio:
+        "Déjese guiar y tómese el tiempo para observar la cueva que le rodea.",
+      audioIndisponible:
+        "El audio de esta etapa estará disponible próximamente.",
+      chargement:
+        "Cargando texto...",
+      erreur:
+        "No se puede cargar el contenido de esta sala."
+    },
 
-let parametre = new URLSearchParams(window.location.search);
+    ca: {
+      retour: "← Tornar a les etapes",
+      audioTitre: "🎧 Escoltar la visita",
+      texteTitre: "📖 Llegir la visita",
+      descriptionAudio:
+        "Deixeu-vos guiar i preneu-vos el temps d’observar la cova que us envolta.",
+      audioIndisponible:
+        "L’àudio d’aquesta etapa estarà disponible aviat.",
+      chargement:
+        "Carregant el text...",
+      erreur:
+        "No s’ha pogut carregar el contingut d’aquesta sala."
+    },
 
-let nomSalle = parametre.get("salle");
+    de: {
+      retour: "← Zurück zu den Stationen",
+      audioTitre: "🎧 Führung anhören",
+      texteTitre: "📖 Führung lesen",
+      descriptionAudio:
+        "Lassen Sie sich führen und nehmen Sie sich Zeit, die Höhle um sich herum zu beobachten.",
+      audioIndisponible:
+        "Der Audioguide für diese Station wird bald verfügbar sein.",
+      chargement:
+        "Text wird geladen...",
+      erreur:
+        "Der Inhalt dieses Raumes konnte nicht geladen werden."
+    },
 
-Promise.all([
+    ru: {
+      retour: "← Вернуться к этапам",
+      audioTitre: "🎧 Слушать экскурсию",
+      texteTitre: "📖 Читать экскурсию",
+      descriptionAudio:
+        "Позвольте экскурсии вести вас и найдите время, чтобы осмотреть пещеру вокруг себя.",
+      audioIndisponible:
+        "Аудиогид для этого этапа скоро будет доступен.",
+      chargement:
+        "Загрузка текста...",
+      erreur:
+        "Не удалось загрузить содержимое этого зала."
+    },
 
-fetch("../textes/salles.json").then(response => response.json()),
+    it: {
+      retour: "← Torna alle tappe",
+      audioTitre: "🎧 Ascolta la visita",
+      texteTitre: "📖 Leggi la visita",
+      descriptionAudio:
+        "Lasciati guidare e prenditi il tempo per osservare la grotta intorno a te.",
+      audioIndisponible:
+        "L’audio di questa tappa sarà presto disponibile.",
+      chargement:
+        "Caricamento del testo...",
+      erreur:
+        "Impossibile caricare il contenuto di questa sala."
+    }
 
-fetch("../textes/" + langue + ".json").then(response => response.json())
+  };
 
-])
 
-.then(([configuration, textes]) => {
+  const traduction =
+    traductions[langueFinale];
 
-let salle = configuration.salles[nomSalle];
 
-let texte = textes[nomSalle];
+  /* =========================================
+     CONFIGURATION DE LA PAGE
+     ========================================= */
 
-let navigation = textes.navigation;
+  document.documentElement.lang =
+    langueFinale;
 
-if (!salle || !texte) {
 
-document.getElementById("titre-salle").innerHTML =
-textes.interface.erreurSalle;
+  document.getElementById("lien-retour").href =
+    "/langues/" + pagesLangues[langueFinale];
 
-return;
 
-}
+  document.getElementById("lien-retour").textContent =
+    traduction.retour;
 
-/* TITRE */
 
-document.getElementById("titre-salle").innerHTML =
-texte.titre;
+  document.querySelector("#bloc-audio h2").textContent =
+    traduction.audioTitre;
 
-/* PROGRESSION */
 
-document.getElementById("progression").innerHTML =
-textes.interface.etape + " " +
-salle.numero + " " +
-textes.interface.sur + " " +
-configuration.ordre.length;
+  document.querySelector("#bloc-texte h2").textContent =
+    traduction.texteTitre;
 
-/* CONTENU */
 
-let contenu = document.getElementById("contenu-salle");
+  document.getElementById("description-audio").textContent =
+    traduction.descriptionAudio;
 
-if (salle.audio) {
 
-contenu.innerHTML = `
+  document.getElementById("audio-indisponible").textContent =
+    traduction.audioIndisponible;
 
-<div class="audio-box">
 
-<audio controls preload="auto" id="lecteur-audio">
+  document.getElementById("texte-salle").textContent =
+    traduction.chargement;
 
-<source src="../audios/${langue}/${nomSalle}.mp3" type="audio/mpeg">
 
-Votre navigateur ne prend pas en charge la lecture audio.
+  /* =========================================
+     FICHIERS JSON
+     ========================================= */
 
-</audio>
+  const fichierTexte =
+    "/textes/" + langueFinale + ".json";
 
-</div>
 
-<div class="texte-visite">
+  /* =========================================
+     CHARGEMENT DU CONTENU
+     ========================================= */
 
-<p>${texte.texte}</p>
+  fetch(fichierTexte)
 
-</div>
+    .then(function (response) {
 
-`;
+      if (!response.ok) {
 
-}
+        throw new Error(
+          "Impossible de charger " + fichierTexte
+        );
 
-else {
+      }
 
-contenu.innerHTML = `
+      return response.json();
 
-<div class="texte-visite">
+    })
 
-<p>${texte.texte}</p>
 
-</div>
+    .then(function (data) {
 
-`;
 
-}
+      /* ==============================
+         VÉRIFICATION DE LA SALLE
+         ============================== */
 
-/* BOUTON PRÉCÉDENT */
+      if (!data.salles || !data.salles[salle]) {
 
-if (salle.precedent) {
+        throw new Error(
+          "Salle introuvable : " + salle
+        );
 
-let boutonPrecedent = document.getElementById("precedent");
+      }
 
-boutonPrecedent.href =
-"salle.html?salle=" + salle.precedent;
 
-boutonPrecedent.innerHTML =
-navigation.precedent;
+      const contenu =
+        data.salles[salle];
 
-}
 
-else {
+      /* ==============================
+         TITRE
+         ============================== */
 
-document.getElementById("precedent").style.display = "none";
+      document.title =
+        contenu.titre +
+        " - Grottes des Canalettes";
 
-}
 
-/* BOUTON CHANGER DE LANGUE */
+      document.getElementById("titre-salle").textContent =
+        contenu.titre;
 
-if (nomSalle === "couloir-des-cupules") {
 
-let boutonLangue = document.createElement("a");
+      /* ==============================
+         TEXTE
+         ============================== */
 
-boutonLangue.href = "../index.html";
+      const texte =
+        contenu.texte || "";
 
-boutonLangue.className = "retour";
 
-boutonLangue.innerHTML = navigation.changerLangue;
+      const paragraphes =
+        texte
+          .split(/\n\s*\n/)
+          .filter(function (paragraphe) {
+            return paragraphe.trim() !== "";
+          });
 
-document.querySelector(".navigation-salles").prepend(boutonLangue);
 
-}
+      document.getElementById("texte-salle").innerHTML =
+        paragraphes
+          .map(function (paragraphe) {
 
-/* BOUTON SUIVANT */
+            return "<p>" +
+              paragraphe
+                .trim()
+                .replace(/\n/g, "<br>") +
+              "</p>";
 
-if (salle.suivant) {
+          })
+          .join("");
 
-let boutonSuivant = document.getElementById("suivant");
 
-boutonSuivant.href =
-"salle.html?salle=" + salle.suivant;
+      /* ==============================
+         AUDIO
+         ============================== */
 
-boutonSuivant.innerHTML =
-navigation.suivant;
+      const audio =
+        document.getElementById("audio-salle");
 
-}
+      const blocAudio =
+        document.getElementById("bloc-audio");
 
-else {
+      const boutonAudio =
+        document.getElementById("bouton-audio");
 
-document.getElementById("suivant").style.display = "none";
 
-}
+      if (contenu.audio && contenu.audio.trim() !== "") {
 
-})
+        audio.src =
+          contenu.audio;
 
-.catch(error => {
 
-console.log(error);
+      } else {
 
-document.getElementById("titre-salle").innerHTML =
-"Erreur de chargement";
+        audio.style.display =
+          "none";
+
+        document.getElementById("audio-indisponible").style.display =
+          "block";
+
+        boutonAudio.style.display =
+          "none";
+
+        /*
+         * Si aucun audio n'existe,
+         * on affiche directement le texte.
+         */
+
+        blocAudio.style.display =
+          "none";
+
+        document.getElementById("bloc-texte").style.display =
+          "block";
+
+        document.getElementById("bouton-texte").classList.add("actif");
+
+      }
+
+    })
+
+
+    .catch(function (error) {
+
+      console.error(
+        "Erreur :",
+        error
+      );
+
+
+      document.getElementById("titre-salle").textContent =
+        "Erreur";
+
+
+      document.getElementById("texte-salle").textContent =
+        traduction.erreur;
+
+
+      document.getElementById("bloc-audio").style.display =
+        "none";
+
+
+      document.getElementById("bloc-texte").style.display =
+        "block";
+
+    });
+
+
+  /* =========================================
+     BOUTON AUDIO
+     ========================================= */
+
+  document.getElementById("bouton-audio")
+    .addEventListener("click", function () {
+
+
+      document.getElementById("bloc-audio").style.display =
+        "block";
+
+
+      document.getElementById("bloc-texte").style.display =
+        "none";
+
+
+      document.getElementById("bouton-audio").classList.add("actif");
+
+
+      document.getElementById("bouton-texte").classList.remove("actif");
+
+    });
+
+
+  /* =========================================
+     BOUTON TEXTE
+     ========================================= */
+
+  document.getElementById("bouton-texte")
+    .addEventListener("click", function () {
+
+
+      document.getElementById("bloc-audio").style.display =
+        "none";
+
+
+      document.getElementById("bloc-texte").style.display =
+        "block";
+
+
+      document.getElementById("bouton-texte").classList.add("actif");
+
+
+      document.getElementById("bouton-audio").classList.remove("actif");
+
+    });
+
 
 });
 
 </script>
 
+
 </body>
 
 </html>
+```

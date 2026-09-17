@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,222 +6,209 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>Grottes des Canalettes - Audio Guide</title>
 
-<link rel="stylesheet" href="/style.css">
+<link
+  rel="stylesheet"
+  href="/style.css"
+>
 
-<link rel="manifest" href="/manifest.json">
+<link
+  rel="manifest"
+  href="/manifest.json"
+>
 
-<meta name="theme-color" content="#c8a96b">
+<meta
+  name="theme-color"
+  content="#c8a96b"
+>
 
 </head>
 
 
 <body>
 
-
 <div class="hero">
 
+  <div class="overlay"></div>
 
-<div class="overlay"></div>
+  <div class="content">
+
+    <h1 id="titre-principal">
+      Bienvenue aux Grottes des Canalettes
+    </h1>
+
+    <h2 id="sous-titre">
+      Laissez-vous guider par l’eau, la roche et le temps.
+    </h2>
+
+    <p id="description">
+      Prenez le temps de regarder autour de vous : certaines formations
+      se trouvent au-dessus de votre tête, d’autres à vos pieds.
+      La grotte se découvre autant en levant les yeux qu’en regardant devant soi.
+    </p>
+
+    <div
+      class="info"
+      id="information"
+    >
+      🎧 Visite audio gratuite • 📖 Texte de visite disponible • 📱 Disponible hors connexion
+    </div>
 
 
-<div class="content">
+    <div class="languages">
 
+      <a
+        href="/langues/francais.html"
+        onclick="choisirLangue('fr')"
+      >
+        🇫🇷 Français
+      </a>
 
-<h1 id="titre-principal">
-Grottes des Canalettes
-</h1>
+      <a
+        href="/langues/anglais.html"
+        onclick="choisirLangue('en')"
+      >
+        🇬🇧 English
+      </a>
 
+      <a
+        href="/langues/espagnol.html"
+        onclick="choisirLangue('es')"
+      >
+        🇪🇸 Español
+      </a>
 
-<h2 id="sous-titre">
-Laissez-vous guider au cœur de la montagne catalane
-</h2>
+      <a
+        href="/langues/catalan.html"
+        onclick="choisirLangue('ca')"
+      >
+        Català
+      </a>
 
+      <a
+        href="/langues/allemand.html"
+        onclick="choisirLangue('de')"
+      >
+        🇩🇪 Deutsch
+      </a>
 
-<p id="description">
-Une exploration sonore des merveilles souterraines des Grottes des Canalettes
-</p>
+      <a
+        href="/langues/russe.html"
+        onclick="choisirLangue('ru')"
+      >
+        🇷🇺 Русский
+      </a>
 
+      <a
+        href="/langues/italien.html"
+        onclick="choisirLangue('it')"
+      >
+        🇮🇹 Italiano
+      </a>
 
+    </div>
 
-<div class="info" id="information">
-
-🎧 Visite audio gratuite • 📱 Disponible hors connexion
+  </div>
 
 </div>
 
 
-
-<div class="languages">
-
-
-<a href="langues/francais.html" onclick="choisirLangue('fr')">
-🇫🇷 Français
-</a>
-
-
-<a href="langues/anglais.html" onclick="choisirLangue('en')">
-🇬🇧 English
-</a>
-
-
-<a href="langues/espagnol.html" onclick="choisirLangue('es')">
-🇪🇸 Español
-</a>
-
-
-<a href="langues/catalan.html" onclick="choisirLangue('ca')">
-Català
-</a>
-
-
-<a href="langues/allemand.html" onclick="choisirLangue('de')">
-🇩🇪 Deutsch
-</a>
-
-
-<a href="langues/russe.html" onclick="choisirLangue('ru')">
-🇷🇺 Русский
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
+<!-- Script principal -->
 <script src="/script.js"></script>
 
+<!-- Gestion des langues -->
 <script src="/langue.js"></script>
 
 
-
-
-
+<!-- Chargement du texte d'accueil français -->
 <script>
-
-
-// Chargement du texte d'accueil en français
 
 fetch("/textes/fr.json")
 
+  .then(response => {
 
-.then(response => {
+    if (!response.ok) {
+      throw new Error("Fichier fr.json introuvable");
+    }
 
+    return response.json();
 
-if (!response.ok) {
+  })
 
-throw new Error("Fichier fr.json introuvable");
+  .then(textes => {
 
-}
+    if (!textes.accueil) {
+      throw new Error("Section accueil introuvable dans fr.json");
+    }
 
+    document.getElementById("titre-principal").textContent =
+      textes.accueil.titre;
 
-return response.json();
+    document.getElementById("sous-titre").textContent =
+      textes.accueil.sousTitre;
 
+    document.getElementById("description").textContent =
+      textes.accueil.description;
 
-})
+    document.getElementById("information").textContent =
+      textes.accueil.info;
 
+  })
 
-.then(textes => {
+  .catch(error => {
 
+    console.log(
+      "Erreur chargement des textes :",
+      error
+    );
 
-
-document.getElementById("titre-principal").innerHTML =
-textes.accueil.titre;
-
-
-
-document.getElementById("sous-titre").innerHTML =
-textes.accueil.sousTitre;
-
-
-
-document.getElementById("description").innerHTML =
-textes.accueil.description;
-
-
-
-document.getElementById("information").innerHTML =
-textes.accueil.info;
-
-
-
-})
-
-
-.catch(error => {
-
-
-console.log("Erreur chargement textes :", error);
-
-
-});
-
-
+  });
 
 </script>
 
 
-
-
-
-
-
+<!-- Service Worker / fonctionnement hors connexion -->
 <script>
-
-
-// Activation du Service Worker
-
 
 if ("serviceWorker" in navigator) {
 
+  window.addEventListener("load", function() {
 
-window.addEventListener("load", function() {
+    navigator.serviceWorker
+      .register("/service-worker.js")
 
+      .then(function(registration) {
 
-navigator.serviceWorker.register("/service-worker.js")
+        console.log(
+          "Service Worker actif :",
+          registration.scope
+        );
 
+      })
 
-.then(function(registration) {
+      .catch(function(error) {
 
+        console.log(
+          "Erreur Service Worker :",
+          error
+        );
 
-console.log("Service Worker actif :", registration.scope);
+      });
 
-
-})
-
-
-.catch(function(error) {
-
-
-console.log("Erreur Service Worker :", error);
-
-
-});
-
-
-});
-
+  });
 
 }
 
-
-
 </script>
-
-
 
 
 </body>
 
 </html>
+```

@@ -1,202 +1,283 @@
-const CACHE_NAME = "grottes-canalettes-v30";
-
+const CACHE_NAME = "grottes-canalettes-v32";
 
 const urlsToCache = [
 
-  "./",
-  "./index.html",
-  "./style.css",
-  "./script.js",
-  "./langue.js",
-  "./manifest.json",
-  "./service-worker.js",
+    // ================================
+    // PAGES PRINCIPALES
+    // ================================
 
-  "./images/icon-192.png",
-  "./images/icon-152.png",
+    "./",
+    "./index.html",
 
+    // ================================
+    // CSS / JAVASCRIPT
+    // ================================
 
-  // Pages salles
+    "./style.css",
+    "./script.js",
+    "./langue.js",
+    "./manifest.json",
 
-  "./salles/salle.html",
-  "./salles/salle-blanche.html",
-  "./salles/salle-du-balcon.html",
-  "./salles/lac-aux-atolls.html",
-  "./salles/salle-du-temple-angkor.html",
-  "./salles/gouffre.html",
-  "./salles/plafond-des-excentriques.html",
+    // ================================
+    // IMAGES / ICÔNES
+    // ================================
 
+    "./images/grotte.jpg",
+    "./images/icon-192.png",
+    "./images/icon-152.png",
 
-  // Langues
+    // ================================
+    // PAGE SALLE
+    // ================================
 
-  "./langues/francais.html",
-  "./langues/anglais.html",
-  "./langues/espagnol.html",
-  "./langues/catalan.html",
-  "./langues/allemand.html",
-  "./langues/russe.html",
+    "./salles/salle.html",
+    "./salles/salle-blanche.html",
+    "./salles/salle-du-balcon.html",
+    "./salles/lac-aux-atolls.html",
+    "./salles/salle-du-temple-angkor.html",
+    "./salles/gouffre.html",
+    "./salles/plafond-des-excentriques.html",
 
+    // ================================
+    // LANGUES
+    // ================================
 
-  // Textes
+    "./langues/francais.html",
+    "./langues/anglais.html",
+    "./langues/espagnol.html",
+    "./langues/catalan.html",
+    "./langues/allemand.html",
+    "./langues/russe.html",
+    "./langues/italien.html",
 
-  "./textes/salles.json",
-  "./textes/fr.json",
-  "./textes/en.json",
-  "./textes/es.json",
+    // ================================
+    // TEXTES
+    // ================================
 
+    "./textes/salles.json",
+    "./textes/fr.json",
+    "./textes/en.json",
+    "./textes/es.json",
+    "./textes/ca.json",
+    "./textes/de.json",
+    "./textes/ru.json",
+    "./textes/it.json",
 
-  // Audios français
+    // ================================
+    // AUDIO FRANÇAIS
+    // ================================
 
-  "./audios/fr/couloir-des-cupules.mp3",
-  "./audios/fr/lac-aux-atolls.mp3",
-  "./audios/fr/salle-blanche.mp3",
-  "./audios/fr/salle-du-balcon.mp3",
-  "./audios/fr/salle-du-temple-angkor.mp3",
+    "./audios/fr/couloir-des-cupules.mp3",
+    "./audios/fr/lac-aux-atolls.mp3",
+    "./audios/fr/salle-blanche.mp3",
+    "./audios/fr/salle-du-balcon.mp3",
+    "./audios/fr/salle-du-temple-angkor.mp3",
 
+    // ================================
+    // AUDIO ANGLAIS
+    // ================================
 
-  // Audios anglais
+    "./audios/en/couloir-des-cupules.mp3",
+    "./audios/en/lac-aux-atolls.mp3",
+    "./audios/en/salle-blanche.mp3",
+    "./audios/en/salle-du-balcon.mp3",
+    "./audios/en/salle-du-temple-angkor.mp3",
 
-  "./audios/en/couloir-des-cupules.mp3",
-  "./audios/en/lac-aux-atolls.mp3",
-  "./audios/en/salle-blanche.mp3",
-  "./audios/en/salle-du-balcon.mp3",
-  "./audios/en/salle-du-temple-angkor.mp3",
+    // ================================
+    // AUDIO ESPAGNOL
+    // ================================
 
+    "./audios/es/couloir-des-cupules.mp3",
+    "./audios/es/lac-aux-atolls.mp3",
+    "./audios/es/salle-blanche.mp3",
+    "./audios/es/salle-du-balcon.mp3",
+    "./audios/es/salle-du-temple-angkor.mp3",
 
-  // Audios espagnols
+    // ================================
+    // AUDIO CATALAN
+    // ================================
 
-  "./audios/es/couloir-des-cupules.mp3",
-  "./audios/es/lac-aux-atolls.mp3",
-  "./audios/es/salle-blanche.mp3",
-  "./audios/es/salle-du-balcon.mp3",
-  "./audios/es/salle-du-temple-angkor.mp3"
+    "./audios/ca/couloir-des-cupules.mp3",
+    "./audios/ca/lac-aux-atolls.mp3",
+    "./audios/ca/salle-blanche.mp3",
+    "./audios/ca/salle-du-balcon.mp3",
+    "./audios/ca/salle-du-temple-angkor.mp3",
 
+    // ================================
+    // AUDIO ALLEMAND
+    // ================================
+
+    "./audios/de/couloir-des-cupules.mp3",
+    "./audios/de/lac-aux-atolls.mp3",
+    "./audios/de/salle-blanche.mp3",
+    "./audios/de/salle-du-balcon.mp3",
+    "./audios/de/salle-du-temple-angkor.mp3",
+
+    // ================================
+    // AUDIO RUSSE
+    // ================================
+
+    "./audios/ru/couloir-des-cupules.mp3",
+    "./audios/ru/lac-aux-atolls.mp3",
+    "./audios/ru/salle-blanche.mp3",
+    "./audios/ru/salle-du-balcon.mp3",
+    "./audios/ru/salle-du-temple-angkor.mp3",
+
+    // ================================
+    // AUDIO ITALIEN
+    // ================================
+
+    "./audios/it/couloir-des-cupules.mp3",
+    "./audios/it/lac-aux-atolls.mp3",
+    "./audios/it/salle-blanche.mp3",
+    "./audios/it/salle-du-balcon.mp3",
+    "./audios/it/salle-du-temple-angkor.mp3"
 ];
 
 
-
+// ====================================
 // INSTALLATION
+// ====================================
 
 self.addEventListener("install", event => {
 
-  self.skipWaiting();
+    self.skipWaiting();
 
-  event.waitUntil(
+    event.waitUntil(
 
-    caches.open(CACHE_NAME)
+        caches.open(CACHE_NAME).then(cache => {
 
-    .then(cache => {
+            return Promise.all(
 
-      return Promise.all(
+                urlsToCache.map(url => {
 
-        urlsToCache.map(url => {
+                    return fetch(url)
+                        .then(response => {
 
-          return fetch(url)
+                            if (!response.ok) {
+                                throw new Error(
+                                    "Erreur HTTP " +
+                                    response.status +
+                                    " pour " +
+                                    url
+                                );
+                            }
 
-          .then(response => {
+                            return cache.put(url, response);
 
-            return cache.put(url, response);
+                        })
+                        .catch(error => {
 
-          })
+                            console.log(
+                                "Impossible de mettre en cache :",
+                                url,
+                                error
+                            );
 
-          .catch(error => {
+                        });
 
-            console.log("Erreur cache :", url);
+                })
 
-          });
+            );
 
         })
 
-      );
-
-    })
-
-  );
+    );
 
 });
 
 
-
-
+// ====================================
 // ACTIVATION
+// ====================================
 
 self.addEventListener("activate", event => {
 
-  event.waitUntil(
+    event.waitUntil(
 
-    caches.keys()
+        caches.keys().then(cacheNames => {
 
-    .then(cacheNames => {
+            return Promise.all(
 
-      return Promise.all(
+                cacheNames.map(cacheName => {
 
-        cacheNames.map(cache => {
+                    if (cacheName !== CACHE_NAME) {
 
-          if(cache !== CACHE_NAME){
+                        console.log(
+                            "Suppression ancien cache :",
+                            cacheName
+                        );
 
-            return caches.delete(cache);
+                        return caches.delete(cacheName);
 
-          }
+                    }
+
+                })
+
+            );
+
+        }).then(() => {
+
+            return self.clients.claim();
 
         })
 
-      );
-
-    })
-
-    .then(() => self.clients.claim())
-
-  );
+    );
 
 });
 
 
-
-
-// MODE HORS CONNEXION
+// ====================================
+// REQUÊTES
+// ====================================
 
 self.addEventListener("fetch", event => {
 
-  const request = event.request;
+    const request = event.request;
 
+    // On ne traite que les requêtes GET
+    if (request.method !== "GET") {
+        return;
+    }
 
-  if(request.method !== "GET"){
+    event.respondWith(
 
-    return;
+        caches.match(request).then(cachedResponse => {
 
-  }
+            // Si le fichier est déjà en cache
+            if (cachedResponse) {
+                return cachedResponse;
+            }
 
+            // Sinon on tente Internet
+            return fetch(request)
 
-  event.respondWith(
+                .then(response => {
 
-    caches.match(request)
+                    return response;
 
-    .then(response => {
+                })
 
+                .catch(() => {
 
-      if(response){
+                    // Si on demande une page HTML
+                    // et qu'Internet est absent,
+                    // on retourne l'accueil.
 
-        return response;
+                    if (
+                        request.headers
+                            .get("accept")
+                            ?.includes("text/html")
+                    ) {
 
-      }
+                        return caches.match("./index.html");
 
+                    }
 
-      return fetch(request)
+                });
 
-      .catch(() => {
+        })
 
-
-        if(request.headers.get("accept")?.includes("text/html")){
-
-          return caches.match("./index.html");
-
-        }
-
-
-      });
-
-
-    })
-
-  );
+    );
 
 });
