@@ -53,8 +53,8 @@ a {
   align-items: center;
   justify-content: center;
 
-  min-height: 48px;
-  padding: 11px 18px;
+  min-height: 50px;
+  padding: 11px 20px;
 
   border-radius: 12px;
   border: none;
@@ -99,7 +99,6 @@ a {
 .choix-visite {
   display: flex;
   gap: 12px;
-
   margin-bottom: 25px;
 }
 
@@ -223,9 +222,6 @@ a {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
 
-
-/* Salle suivante à droite */
-
 .navigation-salle.suivant {
   margin-left: auto;
 }
@@ -237,7 +233,6 @@ a {
 
 .retour-accueil.bas {
   display: inline-flex;
-
   margin-top: 10px;
 }
 
@@ -290,7 +285,6 @@ a {
 
   .navigation-salles {
     gap: 10px;
-
     margin-top: 25px;
   }
 
@@ -308,7 +302,7 @@ a {
   /* Accueil */
 
   .retour-accueil {
-    min-height: 48px;
+    min-height: 50px;
     padding: 10px 16px;
 
     font-size: 14px;
