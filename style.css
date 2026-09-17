@@ -1,639 +1,221 @@
-```css
-/* =========================================================
-   GROTTES DES CANALETTES — AUDIO GUIDE
-   FEUILLE DE STYLE PRINCIPALE
-   ========================================================= */
-
-
-/* =========================================================
-   BASE
-   ========================================================= */
+/* =========================================
+   STYLES GÉNÉRAUX
+   ========================================= */
 
 * {
   box-sizing: border-box;
 }
 
-html,
 body {
   margin: 0;
-  padding: 0;
-  min-height: 100%;
+  font-family: Arial, sans-serif;
+  background: #f5f2ed;
+  color: #333333;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #2c2c2c;
-  background: #111;
-}
-
-
-/* =========================================================
-   PAGE D'ACCUEIL
-   ========================================================= */
-
-.hero {
-  min-height: 100vh;
-
-  background-image: url("/images/grotte.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+a {
+  color: inherit;
 }
 
 
-/* Voile sombre au-dessus de la photo */
+/* =========================================
+   PAGE ACCUEIL
+   ========================================= */
 
-.overlay {
-  position: absolute;
-  inset: 0;
-
-  background: rgba(0, 0, 0, 0.48);
+.conteneur {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px;
 }
 
 
-/* Contenu de la page d'accueil */
-
-.content {
-  position: relative;
-  z-index: 2;
-
-  width: min(900px, 92%);
-
-  padding: 40px 25px;
-
-  text-align: center;
-
-  color: white;
-}
-
-
-/* =========================================================
-   TITRES PAGE D'ACCUEIL
-   ========================================================= */
-
-.content h1 {
-  font-size: clamp(2rem, 6vw, 4rem);
-
-  margin: 0 0 15px;
-
-  line-height: 1.15;
-}
-
-.content h2 {
-  font-size: clamp(1.1rem, 3vw, 1.6rem);
-
-  font-weight: normal;
-
-  margin: 0 0 20px;
-
-  line-height: 1.4;
-}
-
-.content p {
-  font-size: 1.05rem;
-
-  line-height: 1.6;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  max-width: 750px;
-}
-
-
-/* =========================================================
-   INFORMATIONS
-   ========================================================= */
-
-.info {
-  margin: 25px auto;
-
-  font-size: 0.95rem;
-
-  padding: 12px 18px;
-
-  border-radius: 30px;
-
-  background: rgba(255, 255, 255, 0.15);
-
-  backdrop-filter: blur(5px);
-
-  -webkit-backdrop-filter: blur(5px);
-
-  max-width: 700px;
-}
-
-
-/* =========================================================
-   BOUTONS LANGUES / ÉTAPES
-   ========================================================= */
-
-.languages {
-  display: grid;
-
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(140px, 1fr)
-  );
-
-  gap: 12px;
-
-  margin-top: 30px;
-}
-
-
-.languages a {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  min-height: 54px;
-
-  padding: 14px 10px;
-
-  border-radius: 12px;
-
-  background: rgba(255, 255, 255, 0.9);
-
-  color: #222;
-
-  text-decoration: none;
-
-  font-weight: bold;
-
-  line-height: 1.3;
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-
-.languages a:hover {
-  transform: translateY(-2px);
-
-  background: white;
-
-  box-shadow:
-    0 5px 15px rgba(0, 0, 0, 0.18);
-}
-
-
-.languages a:active {
-  transform: translateY(0);
-}
-
-
-/* =========================================================
-   BOUTON RETOUR / START
-   ========================================================= */
-
-.start {
-  display: inline-block;
-
-  margin-top: 30px;
-
-  padding: 12px 20px;
-
-  border-radius: 10px;
-
-  color: white;
-
-  background: rgba(0, 0, 0, 0.35);
-
-  text-decoration: none;
-
-  font-weight: bold;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-
-.start:hover {
-  background: rgba(0, 0, 0, 0.55);
-
-  transform: translateY(-2px);
-}
-
-
-/* =========================================================
-   PAGE D'UNE SALLE
-   ========================================================= */
+/* =========================================
+   PAGE SALLE
+   ========================================= */
 
 .salle-page {
   min-height: 100vh;
+}
 
-  max-width: 900px;
-
+.conteneur-salle {
+  max-width: 850px;
   margin: 0 auto;
-
-  padding: 25px 18px 60px;
-
-  background: #f5f2eb;
-
-  color: #2c2c2c;
+  padding: 25px 20px 40px;
 }
 
 
-/* =========================================================
-   LIEN RETOUR
-   ========================================================= */
+/* =========================================
+   BOUTON ACCUEIL
+   ========================================= */
 
-.retour {
-  display: inline-block;
+.retour-accueil {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  margin-bottom: 25px;
+  min-height: 48px;
+  padding: 11px 18px;
 
-  color: #604d2c;
+  border-radius: 12px;
+  border: none;
+
+  background: #ffffff;
+  color: #333333;
 
   text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
 
-  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 
-  line-height: 1.4;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
 
-  transition: color 0.2s ease;
+.retour-accueil:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
 
 
-.retour:hover {
-  color: #8a6a3d;
-
-  text-decoration: underline;
-}
-
-
-/* =========================================================
+/* =========================================
    TITRE DE LA SALLE
-   ========================================================= */
+   ========================================= */
 
-.salle-page h1 {
-  font-size: clamp(2rem, 6vw, 3rem);
+#titre-salle {
+  margin-top: 28px;
+  margin-bottom: 25px;
 
-  margin: 0 0 30px;
-
-  color: #3c3325;
-
+  font-size: 32px;
   line-height: 1.2;
 }
 
 
-/* =========================================================
-   CHOIX AUDIO / TEXTE
-   ========================================================= */
+/* =========================================
+   BOUTONS ÉCOUTER / LIRE
+   ========================================= */
 
 .choix-visite {
   display: flex;
-
   gap: 12px;
 
   margin-bottom: 25px;
 }
 
-
 .bouton-visite {
-  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 50px;
+  padding: 11px 22px;
 
   border: none;
-
   border-radius: 12px;
 
-  padding: 15px 12px;
+  background: #ffffff;
+  color: #333333;
 
-  background: #ded8cc;
-
-  color: #3c3325;
-
-  font-family: inherit;
-
-  font-size: 1rem;
-
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 600;
 
   cursor: pointer;
 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+
   transition:
     transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
-
 
 .bouton-visite:hover {
   transform: translateY(-2px);
-
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
-
-
-.bouton-visite:active {
-  transform: translateY(0);
-}
-
 
 .bouton-visite.actif {
-  background: #4e402b;
-
-  color: white;
-
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #333333;
+  color: #ffffff;
 }
 
 
-/* =========================================================
-   BLOCS DE VISITE
-   ========================================================= */
+/* =========================================
+   BLOCS AUDIO / TEXTE
+   ========================================= */
 
 .bloc-visite {
-  background: white;
+  margin-top: 10px;
+}
 
-  border-radius: 18px;
+#bloc-audio audio {
+  width: 100%;
+}
+
+
+/* =========================================
+   TEXTE DE LA SALLE
+   ========================================= */
+
+#texte-salle {
+  background: #ffffff;
 
   padding: 25px;
 
-  margin-bottom: 25px;
+  border-radius: 14px;
 
-  box-shadow:
-    0 4px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
-
-
-.bloc-visite h2 {
-  margin-top: 0;
-
-  margin-bottom: 15px;
-
-  color: #4e402b;
-
-  font-size: 1.35rem;
-
-  line-height: 1.3;
-}
-
-
-.bloc-visite p {
-  line-height: 1.7;
-}
-
-
-/* =========================================================
-   LECTEUR AUDIO
-   ========================================================= */
-
-.bloc-visite audio {
-  display: block;
-
-  width: 100%;
-
-  margin-top: 20px;
-}
-
-
-/* =========================================================
-   TEXTE DE VISITE
-   ========================================================= */
-
-#texte-salle {
-  font-size: 1.05rem;
-
-  line-height: 1.75;
-
-  color: #333;
-}
-
 
 #texte-salle p {
-  margin: 0 0 20px;
-}
+  margin-top: 0;
+  margin-bottom: 18px;
 
+  line-height: 1.65;
+}
 
 #texte-salle p:last-child {
   margin-bottom: 0;
 }
 
 
-/* =========================================================
-   MISE EN VALEUR DANS LES TEXTES
-   ========================================================= */
-
-#texte-salle strong {
-  display: block;
-
-  margin-top: 25px;
-
-  margin-bottom: 8px;
-
-  font-size: 1.15rem;
-
-  color: #4e402b;
-}
-
-
-/* =========================================================
-   LIENS DANS LES TEXTES
-   ========================================================= */
-
-#texte-salle a {
-  color: #604d2c;
-
-  font-weight: bold;
-}
-
-
-/* =========================================================
-   MESSAGE AUDIO INDISPONIBLE
-   ========================================================= */
-
-#audio-indisponible {
-  margin-top: 20px;
-
-  padding: 15px;
-
-  border-radius: 10px;
-
-  background: #f0ece4;
-
-  color: #604d2c;
-
-  font-size: 0.95rem;
-}
-
-
-/* =========================================================
-   ÉTAT FOCUS — ACCESSIBILITÉ
-   ========================================================= */
-
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid #c8a96b;
-
-  outline-offset: 3px;
-}
-
-
-/* =========================================================
-   PETITS ÉCRANS
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-  .content {
-    width: 94%;
-
-    padding: 30px 15px;
-  }
-
-
-  .content h1 {
-    font-size: clamp(2rem, 10vw, 3rem);
-  }
-
-
-  .content h2 {
-    font-size: 1.15rem;
-  }
-
-
-  .content p {
-    font-size: 1rem;
-  }
-
-
-  .info {
-    font-size: 0.9rem;
-
-    padding: 11px 14px;
-
-    border-radius: 15px;
-  }
-
-
-  .languages {
-    grid-template-columns: 1fr 1fr;
-
-    gap: 10px;
-
-    margin-top: 25px;
-  }
-
-
-  .languages a {
-    min-height: 52px;
-
-    padding: 13px 7px;
-
-    font-size: 0.95rem;
-  }
-
-
-  .salle-page {
-    padding: 20px 12px 40px;
-  }
-
-
-  .salle-page h1 {
-    margin-bottom: 25px;
-
-    font-size: clamp(1.9rem, 9vw, 2.7rem);
-  }
-
-
-  .bloc-visite {
-    padding: 20px 16px;
-
-    border-radius: 15px;
-  }
-
-
-  .bloc-visite h2 {
-    font-size: 1.2rem;
-  }
-
-
-  #texte-salle {
-    font-size: 1rem;
-
-    line-height: 1.7;
-  }
-
-
-  .choix-visite {
-    gap: 8px;
-  }
-
-
-  .bouton-visite {
-    padding: 14px 8px;
-
-    font-size: 0.95rem;
-  }
-
-}
-
-
-/* =========================================================
-   TRÈS PETITS ÉCRANS
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-  .languages {
-    grid-template-columns: 1fr;
-  }
-
-
-  .choix-visite {
-    flex-direction: column;
-  }
-
-
-  .bouton-visite {
-    width: 100%;
-  }
-
-/* ============================= */
-/* NAVIGATION ENTRE LES SALLES */
-/* ============================= */
+/* =========================================
+   NAVIGATION ENTRE LES SALLES
+   ========================================= */
 
 .navigation-salles {
   display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  margin-top: 40px;
-  margin-bottom: 25px;
+  gap: 12px;
+
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .navigation-salle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  min-height: 52px;
-  padding: 12px 18px;
+  min-height: 50px;
+  padding: 11px 20px;
 
   border-radius: 12px;
-
-  text-decoration: none;
-  font-weight: 600;
+  border: none;
 
   background: #ffffff;
   color: #333333;
 
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .navigation-salle:hover {
@@ -641,29 +223,95 @@ button:focus-visible {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
 
+
+/* Salle suivante à droite */
+
 .navigation-salle.suivant {
   margin-left: auto;
 }
 
+
+/* =========================================
+   RETOUR ACCUEIL DU BAS
+   ========================================= */
+
 .retour-accueil.bas {
-  display: block;
+  display: inline-flex;
+
   margin-top: 10px;
-  margin-bottom: 30px;
 }
 
-/* Téléphone */
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
 @media (max-width: 600px) {
+
+  .conteneur-salle {
+    padding: 18px 15px 30px;
+  }
+
+
+  /* Titre */
+
+  #titre-salle {
+    margin-top: 22px;
+    margin-bottom: 20px;
+
+    font-size: 26px;
+  }
+
+
+  /* Écouter / Lire */
+
+  .choix-visite {
+    gap: 10px;
+  }
+
+  .bouton-visite {
+    flex: 1;
+
+    min-height: 50px;
+    padding: 10px 8px;
+
+    font-size: 14px;
+  }
+
+
+  /* Texte */
+
+  #texte-salle {
+    padding: 20px 17px;
+  }
+
+
+  /* Navigation précédente / suivante */
 
   .navigation-salles {
     gap: 10px;
+
+    margin-top: 25px;
   }
 
   .navigation-salle {
     flex: 1;
-    padding: 11px 8px;
-    font-size: 14px;
+
+    min-height: 50px;
+    padding: 10px 7px;
+
+    font-size: 13px;
     text-align: center;
   }
 
+
+  /* Accueil */
+
+  .retour-accueil {
+    min-height: 48px;
+    padding: 10px 16px;
+
+    font-size: 14px;
+  }
+
 }
-```
